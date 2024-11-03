@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e66c6366d904e98bc83428217d4fd7, type: 3}
+  m_Name: Behaviour.Player
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"variables":{"Kind":"Flow","collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":null,"summary":null,"pan":{"x":294.7029,"y":0.0},"zoom":1.0,"elements":[{"coroutine":false,"defaultValues":{},"position":{"x":-221.0,"y":-63.0},"guid":"3a7d70b1-4880-4be4-aa5d-f2a20df6c746","$version":"A","$type":"Unity.VisualScripting.FixedUpdate","$id":"9"},{"nest":{"source":"Macro","macro":0,"embed":null},"defaultValues":{},"position":{"x":7.0,"y":-56.0},"guid":"997d0c08-9c18-4ac0-af45-e87fad06b0ce","$version":"A","$type":"Unity.VisualScripting.SubgraphUnit","$id":"11"},{"nest":{"source":"Macro","macro":1,"embed":null},"defaultValues":{},"position":{"x":275.0,"y":146.0},"guid":"1884d438-521c-459a-8460-e0fede5c3ffa","$version":"A","$type":"Unity.VisualScripting.SubgraphUnit","$id":"14"},{"nest":{"source":"Macro","macro":2,"embed":null},"defaultValues":{},"position":{"x":525.0,"y":-69.0},"guid":"16145cf1-460b-45f9-be9c-c9b812c5ab42","$version":"A","$type":"Unity.VisualScripting.SubgraphUnit","$id":"17"},{"defaultValues":{},"position":{"x":394.0,"y":270.0},"guid":"4dd89bbf-0d00-4879-a2a3-1d52fe2c47ca","$version":"A","$type":"Unity.VisualScripting.This","$id":"20"},{"sourceUnit":{"$ref":"11"},"sourceKey":"Exit","destinationUnit":{"$ref":"17"},"destinationKey":"Enter","guid":"9734a58f-0793-4400-b69c-a217c1f20aa6","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"9"},"sourceKey":"trigger","destinationUnit":{"$ref":"11"},"destinationKey":"Enter","guid":"d5db6784-a653-40f9-b997-c37594d2dc57","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"20"},"sourceKey":"self","destinationUnit":{"$ref":"17"},"destinationKey":"RigidBody2D","guid":"9e50e802-af6f-4125-b2a0-847e639696cf","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"14"},"sourceKey":"Value","destinationUnit":{"$ref":"17"},"destinationKey":"Speed","guid":"34330f52-540d-45af-9dc1-6625597be34e","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"11"},"sourceKey":"Direction","destinationUnit":{"$ref":"17"},"destinationKey":"Direction","guid":"903e716c-9819-427b-941e-3ded1f5a058f","$type":"Unity.VisualScripting.ValueConnection"}],"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: d1be90a1383dc454096fb6b351e9113a, type: 2}
+    - {fileID: 11400000, guid: 3c62150eac1e0ca48a5ae9e8b14951fc, type: 2}
+    - {fileID: 11400000, guid: 44141851991738d4986fe5d9fab17a55, type: 2}

@@ -2,23 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Lets the event system persist so that the menus can access it while they are loaded. 
+ */
+
 public class PreserveEventSystem : MonoBehaviour
 {
     void Awake()
     {
-        var eventSystems = FindObjectsOfType<UnityEngine.EventSystems.EventSystem>();
-
+    
         DontDestroyOnLoad(gameObject);
-
-        // Destroy any duplicates
-        for (int i = 0; i < eventSystems.Length; i++)
-        {
-            if (i > 0) // Keep the first one
-            {
-                Destroy(eventSystems[i].gameObject);
-            }
-        }
-
     }
 
    

@@ -3,18 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/* Lets the user navigate using the main menu and the level select menu. 
+ * NOTE: Scene Index Values can be found in file>>build settings. 
+ * Please do NOT change the index values.
+ */
+
 public class MainMenu : MonoBehaviour
 {
-    public GameObject mainMenu;
+    //The two menu objects
+    public GameObject mainMenu, lvlSelectMenu;
 
-    /// <summary>
-    /// Loads Level 1, which is assigned to scene index 1 in the build settings.
-    /// The menu scene is assigned to scene index 0.
-    /// Level 2 will likely be assigned to scene index 2 when it gets implemented.
-    /// </summary>
+    public void loadMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
+
+    //Loads Level 1
     public void startPlay()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
+    }
+
+    //Loads Level 2
+    public void startLevel2()
+    {
+        SceneManager.LoadSceneAsync(2);
     }
 
     public void quitPlay()

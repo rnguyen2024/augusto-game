@@ -35,6 +35,12 @@ public class AIChase : MonoBehaviour
             Vector2 direction = (playerTransform.position - transform.position).normalized;
             currentDirection = direction; //Save direction to use if collision occurs
             rb2d.velocity = direction * speed;
+
+            //Checks for horizontal movement and flips accordingly
+            if(direction.x != 0)
+            {
+                FlipEnemy(direction.x);
+            }
         }
         else{
             rb2d.velocity = Vector2.zero; //Stops movement if not chasing
@@ -49,5 +55,19 @@ public class AIChase : MonoBehaviour
             //Stop movements
             rb2d.velocity = Vector2.zero;
         }
+    }
+
+     void FlipEnemy(float directionX)
+    {
+        //Flip the character based on the horizontal movement direction
+        if (directionX > 0) //Moving right
+        {
+            transform.localScale = new Vector3(-3, 3, 1);
+        }
+        else if (directionX < 0) //Moving left
+        {
+            transform.localScale = new Vector3(3, 3, 1);
+        }
+
     }
 }

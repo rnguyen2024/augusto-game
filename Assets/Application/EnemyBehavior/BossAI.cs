@@ -21,7 +21,7 @@ public class BossAI : MonoBehaviour
         playerTransform = player.transform;
 
         rb2d = GetComponent<Rigidbody2D>();
-        rb2d.freezeRotation = true;
+        //rb2d.freezeRotation = true;
 
         // Start the random stop-and-shoot coroutine
         StartCoroutine(RandomStopAndShoot());
@@ -38,6 +38,12 @@ public class BossAI : MonoBehaviour
                 Vector2 direction = (playerTransform.position - transform.position).normalized;
                 currentDirection = direction;
                 rb2d.velocity = direction * speed;
+
+                //Checks for horizontal movement and flips accordingly
+                if(direction.x != 0)
+                {
+                    FlipEnemy(direction.x);
+                }
             }
             else
             {
@@ -108,4 +114,19 @@ public class BossAI : MonoBehaviour
             StopAndShoot();
         }
     }
+
+    void FlipEnemy(float directionX)
+    {
+        //Flip the character based on the horizontal movement direction
+        if (directionX > 0) //Moving right
+        {
+            transform.localScale = new Vector3(-4, 4, 1);
+        }
+        else if (directionX < 0) //Moving left
+        {
+            transform.localScale = new Vector3(4, 4, 1);
+        }
+
+    }
 }
+

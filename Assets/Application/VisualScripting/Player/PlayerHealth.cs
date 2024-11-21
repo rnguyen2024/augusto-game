@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /* Manages the player health and health bar. 
  */
@@ -10,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     //Minimum health is always set to 0. 
     public int maxHealth = 50;
     public int currentHealth;
+    private int currentScene;
 
     //References the healthbar class so that it can be interacted with here. 
     public HealthBarScript healthBar;
@@ -42,6 +44,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("Player Died!");
             //Death logic here!
+
+            currentScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentScene);
+
         }
     }
 

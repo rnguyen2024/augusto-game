@@ -11,6 +11,8 @@ public class AIChase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Because player and enemy are no longer in the same scene heirarchy, enemy now references the player by
+        //the "player" tag instead of it being assigned in the inspector 
         GameObject player = GameObject.FindWithTag("Player");
         playerTransform = player.transform;
         

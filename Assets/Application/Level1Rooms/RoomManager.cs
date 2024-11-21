@@ -7,7 +7,7 @@ public class RoomManager : MonoBehaviour
 {
 
     private int sceneIndex;
-    public bool touchingDoor;
+    private bool prevRoom;
 
     private void Start()
     {
@@ -17,23 +17,26 @@ public class RoomManager : MonoBehaviour
         }
 
         sceneIndex = 3;
-        loadRoom(sceneIndex);
+        prevRoom = false;
+        loadRoom(sceneIndex, prevRoom);
     }
 
-    public void loadRoom(int sceneIndex)
+    public void loadRoom(int sceneIndex, bool prevRoom)
     {
         SceneManager.LoadScene(sceneIndex, LoadSceneMode.Additive);
 
-        if (sceneIndex > 3)
+        if (sceneIndex > 3 && prevRoom == false)
         {
             SceneManager.UnloadSceneAsync(sceneIndex - 1);
+        }
+
+        if (prevRoom == true)
+        {
+            SceneManager.UnloadSceneAsync(sceneIndex + 1);
         }
         
     }
 
-    public void loadNext()
-    {
-        loadRoom(sceneIndex + 1);
-    }
+
 
 }

@@ -15,19 +15,19 @@ public class MainMenu : MonoBehaviour
 
     public void loadMainMenu()
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadScene(0);
     }
 
     //Loads Level 1
     public void startPlay()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadScene(1);
     }
 
     //Loads Level 2
     public void startLevel2()
     {
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadScene(2);
     }
 
     public void quitPlay()

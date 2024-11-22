@@ -28,11 +28,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
 
-        //I used this function just to test the healthbar. It will be replaced once enemies are implemented. 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            takeDamage(5);
-        }
+    
     }
 
     public void takeDamage(int damage)

@@ -26,10 +26,18 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    IEnumerator WaitAndExecute()
+    {
+        
+        yield return new WaitForSeconds(1.0f); // Pause for 2 seconds
+        gameObject.SetActive(false);
+    }
+
     void Die(){
         Debug.Log("Enemy died!");
         animator.SetBool("IsDead", true); 
-
+        StartCoroutine(WaitAndExecute());
+        
         GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<AIChase>().enabled = false;
         GetComponent<EnemyScript>().enabled = false;

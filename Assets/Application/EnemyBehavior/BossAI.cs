@@ -15,6 +15,7 @@ public class BossAI : MonoBehaviour
     private Vector2 currentDirection;
     private bool isStopping = false;
 
+    public Animator animator;
     void Start()
     {
         GameObject player = GameObject.FindWithTag("Player");
@@ -37,6 +38,7 @@ public class BossAI : MonoBehaviour
             {
                 Vector2 direction = (playerTransform.position - transform.position).normalized;
                 currentDirection = direction;
+                animator.SetFloat("BaseSpeed", Mathf.Abs(direction.x));
                 rb2d.velocity = direction * speed;
 
                 //Checks for horizontal movement and flips accordingly

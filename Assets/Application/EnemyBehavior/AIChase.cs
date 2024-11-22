@@ -10,6 +10,8 @@ public class AIChase : MonoBehaviour
     private Transform playerTransform;
     private Rigidbody2D rb2d;
     private Vector2 currentDirection;
+
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class AIChase : MonoBehaviour
         {
             Vector2 direction = (playerTransform.position - transform.position).normalized;
             currentDirection = direction; //Save direction to use if collision occurs
+            animator.SetFloat("BaseSpeed", Mathf.Abs(direction.x));
             rb2d.velocity = direction * speed;
 
             //Checks for horizontal movement and flips accordingly

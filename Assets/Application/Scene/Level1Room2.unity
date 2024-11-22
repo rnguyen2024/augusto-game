@@ -246,6 +246,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2918130009407362193, guid: 70accd2dd9254f645bb1076cf3d91049, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1720085914}
+    - targetCorrespondingSourceObject: {fileID: 2918130009407362193, guid: 70accd2dd9254f645bb1076cf3d91049, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1720085915}
   m_SourcePrefab: {fileID: 100100000, guid: 70accd2dd9254f645bb1076cf3d91049, type: 3}
 --- !u!1 &319845852
 GameObject:
@@ -683,6 +686,11 @@ PrefabInstance:
 --- !u!224 &833808054 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5445290070679724821, guid: 17b2559b65857488796ce0bf29f56a02, type: 3}
+  m_PrefabInstance: {fileID: 833808053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &833808055 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4230983302201729974, guid: 17b2559b65857488796ce0bf29f56a02, type: 3}
   m_PrefabInstance: {fileID: 833808053}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &955072835
@@ -1147,6 +1155,21 @@ MonoBehaviour:
   shootInterval: 1
   projectilePrefab: {fileID: 4066276789573592775, guid: 14402899e2965324bacf8dfe92c051e4, type: 3}
   shootPoint: {fileID: 955072836}
+  animator: {fileID: 833808055}
+--- !u!114 &1720085915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720085912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e47a9460e3c8bf4690310512ab98e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 833808055}
+  maxHealth: 200
 --- !u!1 &1732384856
 GameObject:
   m_ObjectHideFlags: 0

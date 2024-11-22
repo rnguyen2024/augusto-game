@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
  */
 public class PlayerHealth : MonoBehaviour
 {
-
+    public Animator animator;
     //Minimum health is always set to 0. 
     public int maxHealth = 50;
     public int currentHealth;
@@ -38,13 +38,14 @@ public class PlayerHealth : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
+        animator.SetTrigger("Hurt");
         healthBar.setHealth(currentHealth);
 
         if (currentHealth <= 0)
         {
             Debug.Log("Player Died!");
             //Death logic here!
-
+            animator.SetBool("IsDead", true);
             currentScene = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentScene);
 

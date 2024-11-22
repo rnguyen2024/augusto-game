@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Door
+  - SpawnPoint
+  - Objects
+  - Warning
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -11,12 +17,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerBounds
+  - Enemy
+  - Player
+  - Door
+  - SpawnPoint
+  - Boss
   - 
   - 
   - 

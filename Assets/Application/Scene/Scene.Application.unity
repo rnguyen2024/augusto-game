@@ -496,6 +496,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &300241175 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6674831905708682528, guid: e03c0b26bc7ff41e89f4709a00b89df7, type: 3}
+  m_PrefabInstance: {fileID: 1723184119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &494685188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,6 +1519,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 205380808543776369, guid: e03c0b26bc7ff41e89f4709a00b89df7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1769434932}
+    - targetCorrespondingSourceObject: {fileID: 205380808543776369, guid: e03c0b26bc7ff41e89f4709a00b89df7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1769434933}
+    - targetCorrespondingSourceObject: {fileID: 205380808543776369, guid: e03c0b26bc7ff41e89f4709a00b89df7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1769434935}
+    - targetCorrespondingSourceObject: {fileID: 205380808543776369, guid: e03c0b26bc7ff41e89f4709a00b89df7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1769434937}
   m_SourcePrefab: {fileID: 100100000, guid: e03c0b26bc7ff41e89f4709a00b89df7, type: 3}
 --- !u!224 &1723184120 stripped
 RectTransform:
@@ -1677,6 +1691,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  animator: {fileID: 300241175}
+--- !u!114 &1769434933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769434924}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6da83dc88be5b4aa7f6ca2dcb9c0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1769434935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769434924}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0893784e71b1bc14c997ee7742a01f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_JumpForce: 700
+  m_CrouchSpeed: 0.074
+  m_MovementSmoothing: 0.024
+  m_AirControl: 0
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  m_GroundCheck: {fileID: 0}
+  m_CeilingCheck: {fileID: 0}
+  m_CrouchDisableCollider: {fileID: 0}
+  OnLandEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCrouchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1769434937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769434924}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd7c6eb55e6d134d823aad6e3871cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1769434935}
+  runSpeed: 40
 --- !u!1 &2102294518
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class PlayerControls : MonoBehaviour
 
     private float speedX, speedY;
     private Rigidbody2D rb;
+    public Animator animator;
+    
 
     //Start is called before the first frame update
     void Start()
@@ -20,7 +22,10 @@ public class PlayerControls : MonoBehaviour
     {
         speedX = Input.GetAxisRaw("Horizontal");
         speedY = Input.GetAxisRaw("Vertical");
+        animator.SetFloat("BaseSpeed", Mathf.Abs(speedX));
         rb.velocity = new Vector2(speedX, speedY).normalized * speed;
+
+        
 
         if (speedX != 0) //Checks if the player is moving horizontally
         {

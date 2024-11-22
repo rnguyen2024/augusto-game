@@ -88,13 +88,13 @@ public class AIChase : MonoBehaviour
     {
         randomMove = true;
 
-        Debug.Log("Random movement triggered!");
+        //Debug.Log("Random movement triggered!");
         Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         rb2d.velocity = randomDirection * randomMovementDistance;
 
         yield return new WaitForSeconds(1f); //Duration of random movements
         
-        Debug.Log("Random movement ended!");
+        //Debug.Log("Random movement ended!");
         rb2d.velocity = currentDirection * speed; //Goes back to chasing player
         randomMove = false;
         randomMovementTimer = randomMovementInterval;

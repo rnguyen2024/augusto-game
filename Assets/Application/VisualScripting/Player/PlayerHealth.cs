@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
 
     //Tracks damage taken if enemy is in constant contact with player
     private Coroutine damageAccumulated;
+    private float collisionCooldown = 0.8f;
+    private bool canTakeDamage = true;
 
     void Start()
     {
@@ -37,17 +39,19 @@ public class PlayerHealth : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthBar.setHealth(currentHealth);
-
-        if (currentHealth <= 0)
+        if(canTakeDamage)
         {
-            Debug.Log("Player Died!");
-            //Death logic here!
+            currentHealth -= damage;
+            healthBar.setHealth(currentHealth);
 
-            currentScene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentScene);
+            if (currentHealth <= 0)
+            {
+                Debug.Log("Player Died!");
+                //Death logic here!
 
+                currentScene = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(currentScene);
+            }
         }
     }
 
@@ -64,6 +68,10 @@ public class PlayerHealth : MonoBehaviour
             if(damageAccumulated == null)
             {
                 damageAccumulated = StartCoroutine(ApplyDamageOverTime(1.5f, 5, collision.gameObject));
+            }
+            if(canTakeDamage)
+            {
+                StartCoroutine(CollisionCooldown());
             }
         }
     }
@@ -101,5 +109,12 @@ public class PlayerHealth : MonoBehaviour
             takeDamage(damage);
             Debug.Log("Player is taking continuous damage from enemy!");
         }
+    }
+
+    private IEnumerator CollisionCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(collisionCooldown);
+        canTakeDamage = true;
     }
 }

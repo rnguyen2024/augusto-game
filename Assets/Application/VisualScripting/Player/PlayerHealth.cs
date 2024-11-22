@@ -19,6 +19,9 @@ public class PlayerHealth : MonoBehaviour
     //Tracks damage taken if enemy is in constant contact with player
     private Coroutine damageAccumulated;
 
+     private float collisionCooldown = 0.8f; //Cooldown time between damage
+     private bool canTakeDamage = true; 
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -28,11 +31,13 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
 
-    
+
     }
 
     public void takeDamage(int damage)
     {
+        if (canTakeDamage)
+        {
         currentHealth -= damage;
         animator.SetTrigger("Hurt"); //Plays "Hurt" animation
         healthBar.setHealth(currentHealth);
@@ -46,9 +51,10 @@ public class PlayerHealth : MonoBehaviour
             SceneManager.LoadScene(currentScene);
 
         }
+        }
     }
 
-     //Detects a collision with an enemy & calls takeDamage function
+//Detects a collision with an enemy & calls takeDamage function
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Initial Damage
@@ -61,6 +67,11 @@ public class PlayerHealth : MonoBehaviour
             if(damageAccumulated == null)
             {
                 damageAccumulated = StartCoroutine(ApplyDamageOverTime(1.5f, 5, collision.gameObject));
+            }
+
+            if (canTakeDamage)
+            {
+                StartCoroutine(CollisionCooldown());
             }
         }
     }
@@ -81,8 +92,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-
-    //Interface for coroutine, sums up damage over time (time for each increment, damage dealt, gameobject/enemy)
+//Interface for coroutine, sums up damage over time (time for each increment, damage dealt, gameobject/enemy)
     private IEnumerator ApplyDamageOverTime(float interval, int damage, GameObject enemy)
     {
         while (true)
@@ -98,5 +108,13 @@ public class PlayerHealth : MonoBehaviour
             takeDamage(damage);
             Debug.Log("Player is taking continuous damage from enemy!");
         }
+    }
+
+    private IEnumerator CollisionCooldown()
+    {
+        //Damage Cooldown
+        canTakeDamage = false;
+        yield return new WaitForSeconds(collisionCooldown);
+        canTakeDamage = true;
     }
 }

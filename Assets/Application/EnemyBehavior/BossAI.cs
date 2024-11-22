@@ -14,8 +14,15 @@ public class BossAI : MonoBehaviour
     private Rigidbody2D rb2d;
     private Vector2 currentDirection;
     private bool isStopping = false;
+    public float aoeRadius = 5f; // Radius of the AoE effect
+    public float slowDuration = 2f; // How long the slow effect lasts
+
+    private float nextDamageTime;
+
 
     public Animator animator;
+    
+    
     void Start()
     {
         GameObject player = GameObject.FindWithTag("Player");
@@ -135,5 +142,33 @@ public class BossAI : MonoBehaviour
         }
 
     }
-}
 
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the object entering the AoE is the player
+        if (other.CompareTag("Player"))
+        {
+            PlayerControls playerControls = other.GetComponent<PlayerControls>();
+            if (playerControls != null)
+            {
+                playerControls.ApplySlowEffect(true);
+                Debug.Log("Player slowed!");
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        // Remove the slow effect when the player leaves the AoE
+        if (other.CompareTag("Player"))
+        {
+            PlayerControls playerControls = other.GetComponent<PlayerControls>();
+            if (playerControls != null)
+            {
+                playerControls.ApplySlowEffect(false);
+                Debug.Log("Player speed restored!");
+            }
+        }
+    }
+}

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public float speed;
+    public float speed = 8f;
+    public float slowedSpeed = 2f;
+    private float currentSpeed;
+
 
     private float speedX, speedY;
     private Rigidbody2D rb;
@@ -15,6 +18,7 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentSpeed = speed;
     }
 
     //Update is called once per frame
@@ -23,7 +27,7 @@ public class PlayerControls : MonoBehaviour
         speedX = Input.GetAxisRaw("Horizontal");
         speedY = Input.GetAxisRaw("Vertical");
         animator.SetFloat("BaseSpeed", Mathf.Abs(speedX));
-        rb.velocity = new Vector2(speedX, speedY).normalized * speed;
+        rb.velocity = new Vector2(speedX, speedY).normalized * currentSpeed;
 
         
 
@@ -39,5 +43,10 @@ public class PlayerControls : MonoBehaviour
             transform.localScale = new Vector3(3, 3, 1);
             }
         }
+    }
+    
+    public void ApplySlowEffect(bool isSlowed){
+        animator.SetBool("InRange", true);
+        currentSpeed = isSlowed ? slowedSpeed : speed;
     }
 }

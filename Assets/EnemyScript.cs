@@ -28,10 +28,18 @@ public class EnemyScript : MonoBehaviour
 
     void Die(){
         Debug.Log("Enemy died!");
-        animator.SetBool("IsDead", true);
+        animator.SetBool("IsDead", true); 
 
-        GetComponent<Collider2D>().enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<AIChase>().enabled = false;
+        GetComponent<EnemyScript>().enabled = false;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+        rb.velocity = Vector2.zero; // Stop any movement
+        rb.isKinematic = true;     // Disable physics interactions
+        }
+        
         this.enabled = false;
     }
 }

@@ -8,6 +8,8 @@ public class AIChase : MonoBehaviour
     public float chaseDistance;
     private float distance;
     private Transform playerTransform;
+    private Rigidbody2D rb2d;
+    private Vector2 currentDirection;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +17,9 @@ public class AIChase : MonoBehaviour
         //the "player" tag instead of it being assigned in the inspector 
         GameObject player = GameObject.FindWithTag("Player");
         playerTransform = player.transform;
+
+        rb2d = GetComponent<Rigidbody2D>();
+        rb2d.freezeRotation = true; //Prevents rotations when colliding
         
     }
 
@@ -27,7 +32,42 @@ public class AIChase : MonoBehaviour
         //Checks if distance is close enough for enemy to chase, if it is then it updates the position to the players position
         if(distance < chaseDistance)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, playerTransform.position, speed * Time.deltaTime);
+            Vector2 direction = (playerTransform.position - transform.position).normalized;
+            currentDirection = direction; //Save direction to use if collision occurs
+            rb2d.velocity = direction * speed;
+
+            //Checks for horizontal movement and flips accordingly
+            if(direction.x != 0)
+            {
+                FlipEnemy(direction.x);
+            }
         }
+        else{
+            rb2d.velocity = Vector2.zero; //Stops movement if not chasing
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Checks if collision is with an object
+        if (collision.collider.CompareTag("Objects"))
+        {
+            //Stop movements
+            rb2d.velocity = Vector2.zero;
+        }
+    }
+
+     void FlipEnemy(float directionX)
+    {
+        //Flip the character based on the horizontal movement direction
+        if (directionX > 0) //Moving right
+        {
+            transform.localScale = new Vector3(-3, 3, 1);
+        }
+        else if (directionX < 0) //Moving left
+        {
+            transform.localScale = new Vector3(3, 3, 1);
+        }
+
     }
 }

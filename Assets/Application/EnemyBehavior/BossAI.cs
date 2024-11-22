@@ -60,6 +60,11 @@ public class BossAI : MonoBehaviour
         {
             rb2d.velocity = Vector2.zero;
         }
+        //Checks if collision is with the player
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            animator.SetTrigger("Attack");
+        }
     }
 
     public void StopAndShoot()

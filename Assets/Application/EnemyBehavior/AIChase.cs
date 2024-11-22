@@ -58,6 +58,11 @@ public class AIChase : MonoBehaviour
             //Stop movements
             rb2d.velocity = Vector2.zero;
         }
+        //Checks if collision is with the player
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            animator.SetTrigger("Attack");
+        }
     }
 
      void FlipEnemy(float directionX)

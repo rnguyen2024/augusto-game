@@ -165,6 +165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   chaseDistance: 12
+  randomMovementInterval: 5
+  randomMovementDistance: 1
 --- !u!70 &6003285580410818784
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

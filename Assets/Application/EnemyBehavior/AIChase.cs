@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class AIChase : MonoBehaviour
 {
-    public float speed;
-    public float chaseDistance;
-    private float distance;
+    public float speed, chaseDistance, randomMovementInterval, randomMovementDistance;
+
+    private float distance, randomMovementTimer;
     private Transform playerTransform;
     private Rigidbody2D rb2d;
     private Vector2 currentDirection;
+    private bool randomMove = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,30 +22,41 @@ public class AIChase : MonoBehaviour
 
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.freezeRotation = true; //Prevents rotations when colliding
-        
+
+        randomMovementTimer = randomMovementInterval;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Finds distance between two transforms in this case object with script and player
-        distance = Vector2.Distance(transform.position, playerTransform.position);
-
-        //Checks if distance is close enough for enemy to chase, if it is then it updates the position to the players position
-        if(distance < chaseDistance)
+        if(!randomMove)//Checks if the RandomCautiousMovement subroutine in works
         {
-            Vector2 direction = (playerTransform.position - transform.position).normalized;
-            currentDirection = direction; //Save direction to use if collision occurs
-            rb2d.velocity = direction * speed;
+            //Finds distance between two transforms in this case object with script and player
+            distance = Vector2.Distance(transform.position, playerTransform.position);
 
-            //Checks for horizontal movement and flips accordingly
-            if(direction.x != 0)
+            //Checks if distance is close enough for enemy to chase, if it is then it updates the position to the players position
+            if(distance < chaseDistance)
             {
-                FlipEnemy(direction.x);
+                Vector2 direction = (playerTransform.position - transform.position).normalized;
+                currentDirection = direction; //Save direction to use if collision occurs
+                rb2d.velocity = direction * speed;
+
+                //Checks for horizontal movement and flips accordingly
+                if(direction.x != 0)
+                {
+                    FlipEnemy(direction.x);
+                }
+            }
+            else
+            {
+                rb2d.velocity = Vector2.zero; //Stops movement if not chasing
             }
         }
-        else{
-            rb2d.velocity = Vector2.zero; //Stops movement if not chasing
+
+        randomMovementTimer -= Time.deltaTime;
+        if (randomMovementTimer <= 0 && distance < chaseDistance && !randomMove)
+        {
+            StartCoroutine(RandomCautiousMovement());
         }
     }
 
@@ -70,4 +83,23 @@ public class AIChase : MonoBehaviour
         }
 
     }
+
+    IEnumerator RandomCautiousMovement()
+    {
+        randomMove = true;
+
+        Debug.Log("Random movement triggered!");
+        Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        rb2d.velocity = randomDirection * randomMovementDistance;
+
+        yield return new WaitForSeconds(1f); //Duration of random movements
+        
+        Debug.Log("Random movement ended!");
+        rb2d.velocity = currentDirection * speed; //Goes back to chasing player
+        randomMove = false;
+        randomMovementTimer = randomMovementInterval;
+    }
+
 }
+
+    

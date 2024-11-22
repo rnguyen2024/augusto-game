@@ -29,11 +29,11 @@ public class BossAI : MonoBehaviour
 
     void Update()
     {
-        if (!isStopping)
+        if(!isStopping)
         {
             distance = Vector2.Distance(transform.position, playerTransform.position);
 
-            if (distance < chaseDistance)
+            if(distance < chaseDistance)
             {
                 Vector2 direction = (playerTransform.position - transform.position).normalized;
                 currentDirection = direction;
@@ -54,7 +54,7 @@ public class BossAI : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Objects"))
+        if(collision.collider.CompareTag("Objects"))
         {
             rb2d.velocity = Vector2.zero;
         }
@@ -62,7 +62,7 @@ public class BossAI : MonoBehaviour
 
     public void StopAndShoot()
     {
-        if (!isStopping)
+        if(!isStopping)
         {
             StartCoroutine(StopAndShootRoutine());
         }
@@ -70,14 +70,29 @@ public class BossAI : MonoBehaviour
 
     private IEnumerator StopAndShootRoutine()
     {
+        //Checks distance
+        distance = Vector2.Distance(transform.position, playerTransform.position);
+        //If too far then breaks
+        if(distance > chaseDistance)
+        {
+            yield break;
+        }
+
         // Set Rigidbody2D to Kinematic while shooting
         rb2d.bodyType = RigidbodyType2D.Kinematic;
         isStopping = true;
-        rb2d.velocity = Vector2.zero; // Stop movement
+        rb2d.velocity = Vector2.zero; //Stops movement
 
         float timer = 0f;
-        while (timer < stopDuration)
+        while(timer < stopDuration)
         {
+            distance = Vector2.Distance(transform.position, playerTransform.position);
+            //If too far then breaks
+            if(distance > chaseDistance)
+            {
+                break; //Exits if the player moves out of range
+            }
+
             ShootProjectile();
             yield return new WaitForSeconds(shootInterval);
             timer += shootInterval;
@@ -89,13 +104,13 @@ public class BossAI : MonoBehaviour
 
     private void ShootProjectile()
     {
-        if (projectilePrefab != null && shootPoint != null)
+        if(projectilePrefab != null && shootPoint != null)
         {
             GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
             Vector2 shootDirection = (playerTransform.position - shootPoint.position).normalized;
 
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
-            if (projectileRb != null)
+            if(projectileRb != null)
             {
                 float projectileSpeed = 5f;
                 projectileRb.velocity = shootDirection * projectileSpeed;
@@ -111,18 +126,23 @@ public class BossAI : MonoBehaviour
             float waitTime = Random.Range(7f, 11f);
             yield return new WaitForSeconds(waitTime);
 
-            StopAndShoot();
+            distance = Vector2.Distance(transform.position, playerTransform.position);
+
+            if(distance < chaseDistance)
+            {
+                StopAndShoot();
+            }
         }
     }
 
     void FlipEnemy(float directionX)
     {
         //Flip the character based on the horizontal movement direction
-        if (directionX > 0) //Moving right
+        if(directionX > 0) //Moving right
         {
             transform.localScale = new Vector3(-4, 4, 1);
         }
-        else if (directionX < 0) //Moving left
+        else if(directionX < 0) //Moving left
         {
             transform.localScale = new Vector3(4, 4, 1);
         }

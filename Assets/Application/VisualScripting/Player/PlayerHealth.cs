@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
         //Initial Damage
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            takeDamage(10); //Damage player takes
+            takeDamage(5); //Damage player takes
             Debug.Log("Player has collided with an enemy!");
 
             //Coroutine for continuous damage

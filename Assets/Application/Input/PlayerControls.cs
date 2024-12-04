@@ -27,14 +27,22 @@ public class PlayerControls : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("BaseSpeed", Mathf.Abs(movement.x));
+
+        if (movement.magnitude > 1){
+
+            movement = movement.normalized;
+            
+        }
+    
+        
         animator.SetFloat("BaseSpeed", Mathf.Abs(movement.y));
         rb.MovePosition(rb.position + movement * currentSpeed * Time.fixedDeltaTime);
-
         
 
+        
         if (movement.x != 0) //Checks if the player is moving horizontally
         {
+            animator.SetFloat("BaseSpeed", Mathf.Abs(movement.x));
             //Flip the character based on the horizontal movement direction
             if (movement.x > 0) //Moving right
             {

@@ -9,14 +9,21 @@ public class EnemyScript : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
     
+    private bool isUnderDoT = false;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
     }
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(int damage)
+    {
         currentHealth -= damage;
 
         animator.SetTrigger("Hurt");
@@ -26,10 +33,35 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    public void ApplyDamageOverTime(int damage, float duration)
+    {
+        // Prevent multiple overlapping DoT effects
+        if (!isUnderDoT)
+        {
+            StartCoroutine(DamageOverTimeCoroutine(damage, duration));
+        }
+    }
+
+    private IEnumerator DamageOverTimeCoroutine(int damage, float duration)
+    {
+        isUnderDoT = true;
+        yield return new WaitForSeconds(1f);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            TakeDamage(damage);
+            yield return new WaitForSeconds(1f);
+            elapsedTime += 1f;
+        }
+
+        isUnderDoT = false;
+    }
+
     IEnumerator WaitAndExecute()
     {
         
-        yield return new WaitForSeconds(1.0f); // Pause for 2 seconds
+        yield return new WaitForSeconds(1.0f); // Pause for 1 seconds
         gameObject.SetActive(false);
     }
 
@@ -39,7 +71,32 @@ public class EnemyScript : MonoBehaviour
         StartCoroutine(WaitAndExecute());
         
         GetComponent<CapsuleCollider2D>().enabled = false;
-        GetComponent<AIChase>().enabled = false;
+
+        // Check if AIChase exists and disable it, otherwise check for BossAI
+        AIChase aiChase = GetComponent<AIChase>();
+        if (aiChase != null)
+        {
+            aiChase.enabled = false;
+        }
+        else
+        {
+            Enemy3AI enemy3AI = GetComponent<Enemy3AI>();
+                if (enemy3AI != null)
+                {
+                    enemy3AI.enabled = false;
+                }
+
+            else
+            {
+                BossAI bossAI = GetComponent<BossAI>();
+            if (bossAI != null)
+            {
+                bossAI.enabled = false;
+            }
+            }
+        }
+       
+        
         GetComponent<EnemyScript>().enabled = false;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
@@ -51,3 +108,4 @@ public class EnemyScript : MonoBehaviour
         this.enabled = false;
     }
 }
+

@@ -5,17 +5,17 @@ public class BossAI : MonoBehaviour
 {
     public float speed;
     public float chaseDistance;
-    public float stopDuration; // Time spent stopping to shoot
-    public float shootInterval; // Time between consecutive shots during the stop phase
-    public GameObject projectilePrefab; // Prefab for the boss's projectile
-    public Transform shootPoint; // The point where projectiles spawn
+    public float stopDuration; //Time spent stopping to shoot
+    public float shootInterval; //Time between consecutive shots during the stop phase
+    public GameObject projectilePrefab; //Prefab for the boss's projectile
+    public Transform shootPoint; //The point where projectiles spawn
     private float distance;
     private Transform playerTransform;
     private Rigidbody2D rb2d;
     private Vector2 currentDirection;
     private bool isStopping = false;
-    public float aoeRadius = 5f; // Radius of the AoE effect
-    public float slowAmount = 0.5f; // How long the slow effect lasts
+    public float aoeRadius = 5f; //Radius of the AoE effect
+    public float slowAmount = 0.5f; //How long the slow effect lasts
 
     private float nextDamageTime;
 
@@ -31,7 +31,7 @@ public class BossAI : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         //rb2d.freezeRotation = true;
 
-        // Start the random stop-and-shoot coroutine
+        //Start the random stop-and-shoot coroutine
         StartCoroutine(RandomStopAndShoot());
     }
 

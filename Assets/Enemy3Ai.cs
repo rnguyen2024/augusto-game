@@ -5,10 +5,10 @@ public class Enemy3AI : MonoBehaviour
 {
     public float speed;
     public float chaseDistance;
-    public float stopDuration; // Time spent stopping to shoot
-    public float shootInterval; // Time between consecutive shots during the stop phase
-    public GameObject projectilePrefab; // Prefab for the projectile
-    public Transform shootPoint; // The point where projectiles spawn
+    public float stopDuration; //Time spent stopping to shoot
+    public float shootInterval; // ime between consecutive shots during the stop phase
+    public GameObject projectilePrefab; //Prefab for the projectile
+    public Transform shootPoint; //The point where projectiles spawn
     private float distance;
     private Transform playerTransform;
     private Rigidbody2D rb2d;

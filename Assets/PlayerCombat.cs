@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -15,13 +16,24 @@ public class PlayerCombat : MonoBehaviour
     public float attackRate = 2f;
     float nextAttackTime = 0f;
 
-    // Update is called once per frame
-    void Update()
+    private PlayerControls playerControls;
+
+    void Start()
     {
-        if(Time.time >= nextAttackTime){
-            if(Input.GetKeyDown(KeyCode.Mouse0)){
-            Attack();
-            nextAttackTime = Time.time + 1f / attackRate;
+        playerControls = GetComponent<PlayerControls>(); 
+    }
+    void Update()
+    {   
+        if (playerControls.isStunned == false)
+        {
+            Debug.Log("Not stunned");
+
+            if(Time.time >= nextAttackTime){
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    Attack();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                }
             }
         }
     }

@@ -10,6 +10,7 @@ TagManager:
   - Objects
   - Warning
   - Boss
+  - Enemy2
   layers:
   - Default
   - TransparentFX

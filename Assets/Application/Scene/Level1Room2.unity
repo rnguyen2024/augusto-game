@@ -1222,7 +1222,7 @@ MonoBehaviour:
   castDuration: 2
   castInterval: 5
   circlePrefab: {fileID: 2792625510813895409, guid: 0ffcda3731853ed46a775638afbf3d3f, type: 3}
-  chaseDistance: 12
+  chaseDistance: 8
   animator: {fileID: 2509791076647323306}
   speed: 6
 --- !u!114 &638834723
@@ -1237,8 +1237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4e8ddbac6c72f4eb8ad87e141d1ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  chaseDistance: 12
+  speed: 1
+  chaseDistance: 8
   animator: {fileID: 2509791076647323306}
 --- !u!114 &638834724
 MonoBehaviour:
@@ -5987,7 +5987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965579892717459903, guid: 4dbdbede7c6f31e459cd2025808f999d, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy2
       objectReference: {fileID: 0}
     - target: {fileID: 6981557545098436973, guid: 4dbdbede7c6f31e459cd2025808f999d, type: 3}
       propertyPath: m_Layer

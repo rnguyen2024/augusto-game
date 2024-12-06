@@ -37,6 +37,7 @@ public class Spell : MonoBehaviour
 
         if (distance < chaseDistance)
         {
+            //Cast spell if player is in range 
             if (distance < attackDistance && !isCasting)
             {
                 StartCoroutine(castSpellRoutine());
@@ -46,24 +47,26 @@ public class Spell : MonoBehaviour
 
     private IEnumerator castSpellRoutine()
     {
-        isCasting = true; // Mark the enemy as currently casting
+        isCasting = true;
+        rb2d.bodyType = RigidbodyType2D.Kinematic;
+        rb2d.velocity = Vector2.zero;
 
-        
+        yield return new WaitForSeconds(0.5f);
+
         float timer = 0f;
+
         while (timer < castDuration)
         {
-            //animator.SetTrigger("Attack"); // Play attack animation (optional)
-            Debug.Log("Casting");
-            castSpell(); // Generate the prefab
+            castSpell(); 
             yield return new WaitForSeconds(castInterval);
             timer += castInterval;
         }
         isCasting = false;
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void castSpell()
     {
-        rb2d.velocity = Vector2.zero; // Stop movement
         animator.SetTrigger("Attack");
         GameObject magicCircle = Instantiate(circlePrefab, shootPoint.position, Quaternion.identity);
         magicCircle.GetComponent<magicCircle>().Initialize(transform);
@@ -81,6 +84,16 @@ public class Spell : MonoBehaviour
             transform.localScale = new Vector3(4, 4, 1);
         }
 
+    }
+
+    public void stopMovement()
+    {
+        rb2d.bodyType = RigidbodyType2D.Static;
+    }
+
+    public void resumeMovement()
+    {
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
     }
 
 }

@@ -13,6 +13,7 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     public Animator animator;
+    public bool isStunned;
     
 
     //Start is called before the first frame update
@@ -25,6 +26,12 @@ public class PlayerControls : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
+        if (isStunned == true)
+        {
+            animator.SetFloat("BaseSpeed", 0);
+            return; 
+        }
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -66,5 +73,25 @@ public class PlayerControls : MonoBehaviour
         Debug.Log("Removing slow effect.");
         currentSpeed = speed; // Restore speed
     }
-    
+
+    //Player cannot move
+    public void applyStun(float stunDuration)
+    {
+        
+        StartCoroutine(Stun(stunDuration));
+       
+    }
+
+    private IEnumerator Stun(float stunDuration)
+    {
+        isStunned = true;
+        float originalSpeed = currentSpeed; 
+        currentSpeed = 0;
+        animator.SetFloat("BaseSpeed", 0);
+
+        yield return new WaitForSeconds(stunDuration); 
+
+        currentSpeed = originalSpeed; 
+         isStunned = false;
+    }
 }

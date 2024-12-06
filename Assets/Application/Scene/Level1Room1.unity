@@ -900,6 +900,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevelIndex: 4
   prevRoom: 0
+--- !u!212 &588300638 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 566978838143113952, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+  m_PrefabInstance: {fileID: 2452612883235855645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &641215876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,6 +2298,11 @@ Rigidbody2D:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6766371440681769707, guid: 41c49f7f547a9204eb126b153cf1a452, type: 3}
   m_PrefabInstance: {fileID: 1692508155}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &785042364 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3275303189422149904, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+  m_PrefabInstance: {fileID: 2452612883235855645}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &833698750 stripped
 Transform:
@@ -7630,6 +7640,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2452612883235855646}
+  sprite: {fileID: 785042364}
+  sprite2: {fileID: 588300638}
+  sprite3: {fileID: 0}
   maxHealth: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

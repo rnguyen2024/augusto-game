@@ -544,6 +544,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc72a2cdd8f7764482305459ee4be97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &418753490 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4623433487058771000, guid: cdf58f088f9ff419b85fa0917cdf4bf8, type: 3}
+  m_PrefabInstance: {fileID: 1273368672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &423957445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1712710098584926988, guid: cdf58f088f9ff419b85fa0917cdf4bf8, type: 3}
@@ -1040,6 +1045,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevelIndex: 3
   prevRoom: 1
+--- !u!212 &543837812 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 566978838143113952, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+  m_PrefabInstance: {fileID: 1251668476}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &614330513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1188,16 @@ CanvasRenderer:
 Animator:
   m_CorrespondingSourceObject: {fileID: 3028956726692214199, guid: cdf58f088f9ff419b85fa0917cdf4bf8, type: 3}
   m_PrefabInstance: {fileID: 1273368672}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &800385124 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 566978838143113952, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+  m_PrefabInstance: {fileID: 1284946620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &999608174 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3275303189422149904, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+  m_PrefabInstance: {fileID: 1251668476}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1245724809
 GameObject:
@@ -1335,6 +1355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1251668478}
+  sprite: {fileID: 999608174}
+  sprite2: {fileID: 543837812}
   maxHealth: 100
 --- !u!1001 &1273368672
 PrefabInstance:
@@ -1853,7 +1875,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1284946622}
+  sprite: {fileID: 1366679115}
+  sprite2: {fileID: 800385124}
   maxHealth: 100
+--- !u!212 &1366679115 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3275303189422149904, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+  m_PrefabInstance: {fileID: 1284946620}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1414280619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,6 +2264,11 @@ Transform:
   - {fileID: 1903594483}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1806898992 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3711394528210183295, guid: cdf58f088f9ff419b85fa0917cdf4bf8, type: 3}
+  m_PrefabInstance: {fileID: 1273368672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1867532866
 GameObject:
   m_ObjectHideFlags: 0
@@ -6079,6 +6113,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1732384857}
     m_Modifications:
+    - target: {fileID: 3952175818889068107, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 757868756}
     - target: {fileID: 1865284543635755136, guid: 70accd2dd9254f645bb1076cf3d91049, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -6175,10 +6213,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3952175818889068107, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 757868756}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8475108222146059443, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
@@ -6217,6 +6251,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 757868756}
+  sprite: {fileID: 1806898992}
+  sprite2: {fileID: 418753490}
   maxHealth: 150
 --- !u!114 &2114594621
 MonoBehaviour:
@@ -6234,7 +6270,7 @@ MonoBehaviour:
   chaseDistance: 12
   stopDuration: 3
   shootInterval: 1
-  projectilePrefab: {fileID: 4066276789573592775, guid: 14402899e2965324bacf8dfe92c051e4, type: 3}
+  projectilePrefab: {fileID: 4066276789573592775, guid: 2337f8fa42f15c04e91d24426e246af3, type: 3}
   shootPoint: {fileID: 423957445}
   animator: {fileID: 757868756}
 --- !u!1660057539 &9223372036854775807

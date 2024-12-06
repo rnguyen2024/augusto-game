@@ -574,6 +574,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!212 &418753490 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7400400812505322591, guid: 17b2559b65857488796ce0bf29f56a02, type: 3}
+  m_PrefabInstance: {fileID: 833808053}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &833808053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -995,6 +1000,11 @@ RectTransform:
 --- !u!95 &833808055 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4230983302201729974, guid: 17b2559b65857488796ce0bf29f56a02, type: 3}
+  m_PrefabInstance: {fileID: 833808053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &920612887 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4772912035893970319, guid: 17b2559b65857488796ce0bf29f56a02, type: 3}
   m_PrefabInstance: {fileID: 833808053}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &955072835
@@ -5342,6 +5352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 833808055}
+  sprite: {fileID: 920612887}
+  sprite2: {fileID: 418753490}
   maxHealth: 300
 --- !u!58 &1720085922
 CircleCollider2D:

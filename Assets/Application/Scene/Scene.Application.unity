@@ -875,6 +875,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!212 &588300638 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2843105719665373406, guid: e03c0b26bc7ff41e89f4709a00b89df7, type: 3}
+  m_PrefabInstance: {fileID: 1723184119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &719634479
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,6 +990,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1723184120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &920612887 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8746289864256093993, guid: e03c0b26bc7ff41e89f4709a00b89df7, type: 3}
+  m_PrefabInstance: {fileID: 1723184119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &971574562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2240,8 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 0
   healthBar: {fileID: 59155622}
+  sprite: {fileID: 920612887}
+  sprite2: {fileID: 588300638}
 --- !u!114 &1769434927
 MonoBehaviour:
   m_ObjectHideFlags: 0

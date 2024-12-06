@@ -6,6 +6,10 @@ public class EnemyScript : MonoBehaviour
 {
     public Animator animator;
 
+    public SpriteRenderer sprite;
+    public SpriteRenderer sprite2;
+    
+
     public int maxHealth = 100;
     int currentHealth;
     
@@ -25,9 +29,9 @@ public class EnemyScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
+        
         animator.SetTrigger("Hurt");
-
+        StartCoroutine(FlashRed());
         if(currentHealth <= 0){
             Die();
         }
@@ -106,6 +110,16 @@ public class EnemyScript : MonoBehaviour
         }
         
         this.enabled = false;
+    }
+
+    public IEnumerator FlashRed(){
+        sprite.color = Color.red;
+        sprite2.color = Color.red;
+        
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+        sprite2.color = Color.white;
+        
     }
 }
 

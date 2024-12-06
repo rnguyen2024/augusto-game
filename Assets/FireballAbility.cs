@@ -14,6 +14,8 @@ public class PlayerFireballAbility : MonoBehaviour
 
     private bool canShootFireball = true;
 
+    public GameObject fireballTimer;
+
     void Update()
     {
         HandleInput();
@@ -50,7 +52,17 @@ public class PlayerFireballAbility : MonoBehaviour
     private IEnumerator FireballCooldown()
     {
         canShootFireball = false;
+        DisableTargetGameObject();
         yield return new WaitForSeconds(fireballCooldown);
         canShootFireball = true;
+        EnableTargetGameObject();
+    }
+
+    void DisableTargetGameObject(){
+        fireballTimer.SetActive(false);
+    }
+
+    void EnableTargetGameObject(){
+        fireballTimer.SetActive(true);
     }
 }

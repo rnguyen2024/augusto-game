@@ -1,21 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-public class BossAI : MonoBehaviour
+public class Enemy3AI : MonoBehaviour
 {
     public float speed;
     public float chaseDistance;
     public float stopDuration; //Time spent stopping to shoot
-    public float shootInterval; //Time between consecutive shots during the stop phase
-    public GameObject projectilePrefab; //Prefab for the boss's projectile
+    public float shootInterval; // ime between consecutive shots during the stop phase
+    public GameObject projectilePrefab; //Prefab for the projectile
     public Transform shootPoint; //The point where projectiles spawn
     private float distance;
     private Transform playerTransform;
     private Rigidbody2D rb2d;
     private Vector2 currentDirection;
     private bool isStopping = false;
-    public float aoeRadius = 5f; //Radius of the AoE effect
-    public float slowAmount = 0.5f; //How long the slow effect lasts
+    
 
     private float nextDamageTime;
 
@@ -31,7 +30,7 @@ public class BossAI : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         //rb2d.freezeRotation = true;
 
-        //Start the random stop-and-shoot coroutine
+        // Start the random stop-and-shoot coroutine
         StartCoroutine(RandomStopAndShoot());
     }
 
@@ -108,7 +107,7 @@ public class BossAI : MonoBehaviour
         {
             GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
             Vector2 shootDirection = (playerTransform.position - shootPoint.position).normalized;
-
+            animator.SetTrigger("Attack");
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
             if (projectileRb != null)
             {
@@ -135,44 +134,12 @@ public class BossAI : MonoBehaviour
         //Flip the character based on the horizontal movement direction
         if (directionX > 0) //Moving right
         {
-            transform.localScale = new Vector3(-4, 4, 1);
+            transform.localScale = new Vector3(-3, 3, 1);
         }
         else if (directionX < 0) //Moving left
         {
-            transform.localScale = new Vector3(4, 4, 1);
+            transform.localScale = new Vector3(3, 3, 1);
         }
 
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log($"Object entered AoE: {other.name}");
-        // Check if the object entering the AoE is the player
-        if (other.CompareTag("Player"))
-        {
-            PlayerControls playerControls = other.GetComponent<PlayerControls>();
-            if (playerControls != null)
-            {
-                playerControls.ApplySlowEffect(slowAmount);
-                Debug.Log("Player slowed!");
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        Debug.Log($"Object exited AoE: {other.name}");
-        // Check if the object leaving the AoE is the player
-        if (other.CompareTag("Player"))
-        {
-            PlayerControls playerControls = other.GetComponent<PlayerControls>();
-            if (playerControls != null)
-            {
-                playerControls.RemoveSlowEffect();
-                Debug.Log("Player speed restored!");
-            }
-        }
-    }
-
-    
 }

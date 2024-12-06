@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5190629395398456539}
   - component: {fileID: 7393561576869198520}
   - component: {fileID: -647388981040940460}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: FireBall
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -184,4 +184,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  lifetime: 5
+  lifetime: 3.5

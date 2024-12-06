@@ -10,6 +10,8 @@ TagManager:
   - Objects
   - Warning
   - Boss
+  - Enemy2
+  - PowerUp
   layers:
   - Default
   - TransparentFX
@@ -23,9 +25,9 @@ TagManager:
   - Door
   - SpawnPoint
   - Boss
-  - 
-  - 
-  - 
+  - PlayerProjectile
+  - EnemyProjectile
+  - PowerUp
   - 
   - 
   - 

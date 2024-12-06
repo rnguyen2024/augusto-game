@@ -8,9 +8,12 @@ public class RoomManager : MonoBehaviour
 
     private int sceneIndex;
     private bool prevRoom;
+    private loadscreeen loadScreen;
 
     private void Start()
     {
+        loadScreen = FindObjectOfType<loadscreeen>();
+
         if (SceneManager.GetActiveScene().buildIndex != 0 && !SceneManager.GetSceneByBuildIndex(1).isLoaded)
         {
             SceneManager.LoadScene(1, LoadSceneMode.Additive);
@@ -23,20 +26,20 @@ public class RoomManager : MonoBehaviour
 
     public void loadRoom(int sceneIndex, bool prevRoom)
     {
-        SceneManager.LoadScene(sceneIndex, LoadSceneMode.Additive);
+        loadScreen.Transition();
+       
+        SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
 
-        if (sceneIndex > 3 && prevRoom == false)
+        if (sceneIndex > 3 && !prevRoom)
         {
             SceneManager.UnloadSceneAsync(sceneIndex - 1);
         }
-
-        if (prevRoom == true)
+        else if (prevRoom)
         {
             SceneManager.UnloadSceneAsync(sceneIndex + 1);
         }
-        
+
     }
-
-
-
 }
+
+

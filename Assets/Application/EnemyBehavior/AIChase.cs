@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,12 +36,13 @@ public class AIChase : MonoBehaviour
         {
             Vector2 direction = (playerTransform.position - transform.position).normalized;
             currentDirection = direction; //Save direction to use if collision occurs
-            animator.SetFloat("BaseSpeed", Mathf.Abs(direction.x));
+            animator.SetFloat("BaseSpeed", Mathf.Abs(direction.y));
             rb2d.velocity = direction * speed;
 
             //Checks for horizontal movement and flips accordingly
             if(direction.x != 0)
             {
+                animator.SetFloat("BaseSpeed", Mathf.Abs(direction.x));
                 FlipEnemy(direction.x);
             }
         }
@@ -56,7 +57,7 @@ public class AIChase : MonoBehaviour
         if (collision.collider.CompareTag("Objects"))
         {
             //Stop movements
-            rb2d.velocity = Vector2.zero;
+            //rb2d.velocity = Vector2.zero;
         }
         //Checks if collision is with the player
         if (collision.gameObject.CompareTag("Player"))

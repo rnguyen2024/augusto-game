@@ -3883,7 +3883,7 @@ Transform:
   m_GameObject: {fileID: 1304180488}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75.54121, y: 17.66018, z: 2.749501}
+  m_LocalPosition: {x: -24, y: 48, z: 2.749501}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5354,7 +5354,7 @@ MonoBehaviour:
   animator: {fileID: 833808055}
   sprite: {fileID: 920612887}
   sprite2: {fileID: 418753490}
-  maxHealth: 300
+  maxHealth: 600
 --- !u!58 &1720085922
 CircleCollider2D:
   m_ObjectHideFlags: 0

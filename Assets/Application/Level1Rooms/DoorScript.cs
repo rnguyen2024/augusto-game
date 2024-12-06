@@ -7,10 +7,12 @@ public class DoorScript : MonoBehaviour
     public int nextLevelIndex;
     public bool prevRoom;
     private RoomManager roomManager;
+    
 
     void Start()
     {
         roomManager = FindObjectOfType<RoomManager>();
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -19,7 +21,9 @@ public class DoorScript : MonoBehaviour
         //Calls loadRoom in room Manager to load the next scene
         if (other.CompareTag("Player"))
         {
+
             roomManager.loadRoom(nextLevelIndex, prevRoom);
+           
         }
     }
 }

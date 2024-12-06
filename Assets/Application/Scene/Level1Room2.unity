@@ -1406,11 +1406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6798380420513501333, guid: 4dbdbede7c6f31e459cd2025808f999d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.5
+      value: 2.17
       objectReference: {fileID: 0}
     - target: {fileID: 6798380420513501333, guid: 4dbdbede7c6f31e459cd2025808f999d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.72
+      value: -1.29
       objectReference: {fileID: 0}
     - target: {fileID: 6798380420513501333, guid: 4dbdbede7c6f31e459cd2025808f999d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1725,7 +1725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237492629845980280, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.20798492
+      value: -14.34
       objectReference: {fileID: 0}
     - target: {fileID: 2237492629845980280, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2743,7 +2743,7 @@ Transform:
   m_GameObject: {fileID: 1732384856}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -69.90568, y: 12.113993, z: 0.12820435}
+  m_LocalPosition: {x: -40, y: 15, z: 0.12820435}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6762,6 +6762,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1732384857}
     m_Modifications:
+    - target: {fileID: 3952175818889068107, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 757868756}
     - target: {fileID: 1865284543635755136, guid: 70accd2dd9254f645bb1076cf3d91049, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -6862,10 +6866,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3952175818889068107, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 757868756}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8475108222146059443, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}

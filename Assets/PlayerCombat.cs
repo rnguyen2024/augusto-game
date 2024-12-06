@@ -76,7 +76,7 @@ public class PlayerCombat : MonoBehaviour
         attackDamage = attackDamage + bonus;
 
         Debug.Log(attackDamage);
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(15f);
 
         attackDamage = originalDamage;
         attackBoost = false;

@@ -7642,7 +7642,6 @@ MonoBehaviour:
   animator: {fileID: 2452612883235855646}
   sprite: {fileID: 785042364}
   sprite2: {fileID: 588300638}
-  sprite3: {fileID: 0}
   maxHealth: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

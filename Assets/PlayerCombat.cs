@@ -15,12 +15,16 @@ public class PlayerCombat : MonoBehaviour
     
     public float attackRate = 2f;
     float nextAttackTime = 0f;
+    private bool attackBoost = false;
 
     private PlayerControls playerControls;
+    private GameObject atkBuffIcon;
 
     void Start()
     {
-        playerControls = GetComponent<PlayerControls>(); 
+        playerControls = GetComponent<PlayerControls>();
+        atkBuffIcon = GameObject.Find("AttackUpStatus");
+        atkBuffIcon.SetActive(false);
     }
     void Update()
     {   
@@ -57,5 +61,26 @@ public class PlayerCombat : MonoBehaviour
                 enemy2AI.TakeDamage(attackDamage);
             }
         }
+    }
+    public void applyAtackBuff(int bonus)
+    {
+        StartCoroutine(attackBonus(bonus));
+    }
+
+    private IEnumerator attackBonus(int bonus)
+    {
+        Debug.Log("bonus start now");
+        attackBoost = true;
+        atkBuffIcon.SetActive(true);
+        int originalDamage = attackDamage;
+        attackDamage = attackDamage + bonus;
+
+        Debug.Log(attackDamage);
+        yield return new WaitForSeconds(20f);
+
+        attackDamage = originalDamage;
+        attackBoost = false;
+        atkBuffIcon.SetActive(false);
+        Debug.Log("Bonus over");
     }
 }

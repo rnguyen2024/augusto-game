@@ -34,7 +34,7 @@ public class MenuMusic : MonoBehaviour
         audioSource.loop = true;
         audioSource.playOnAwake = true;
         audioSource.spatialBlend = 0f;
-        audioSource.volume = .7f;
+        audioSource.volume = .4f;
         audioSource.clip = menuMusic;
     }
 

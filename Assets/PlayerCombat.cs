@@ -20,17 +20,23 @@ public class PlayerCombat : MonoBehaviour
     private PlayerControls playerControls;
     private GameObject atkBuffIcon;
 
+    public AudioClip attackSFX;
+    private AudioSource sfxSource;
+
+
     void Start()
     {
         playerControls = GetComponent<PlayerControls>();
         atkBuffIcon = GameObject.Find("AttackUpStatus");
         atkBuffIcon.SetActive(false);
+
+        sfxSource = GetComponent<AudioSource>();
     }
     void Update()
     {   
         if (playerControls.isStunned == false)
         {
-            Debug.Log("Not stunned");
+            //Debug.Log("Not stunned");
 
             if(Time.time >= nextAttackTime){
                 if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -45,6 +51,10 @@ public class PlayerCombat : MonoBehaviour
     void Attack(){
         animator.SetTrigger("Attack");
 
+        if (attackSFX != null && sfxSource != null)
+        {
+            sfxSource.PlayOneShot(attackSFX);
+        }
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 

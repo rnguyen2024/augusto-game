@@ -16,6 +16,14 @@ public class PlayerFireballAbility : MonoBehaviour
 
     public GameObject fireballTimer;
 
+    public AudioClip fireballSFX;
+    private AudioSource sfxSource;
+
+    void Start()
+    {
+        sfxSource = GetComponent<AudioSource>(); // Ensure the AudioSource is on this GameObject
+    }
+
     void Update()
     {
         HandleInput();
@@ -31,6 +39,11 @@ public class PlayerFireballAbility : MonoBehaviour
 
     private void ShootFireball()
     {
+         if (fireballSFX != null && sfxSource != null)
+        {
+            sfxSource.PlayOneShot(fireballSFX);
+        }
+
         //Get mouse position in world coordinates
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = Mathf.Abs(Camera.main.transform.position.z);

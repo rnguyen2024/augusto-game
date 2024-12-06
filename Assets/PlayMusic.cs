@@ -35,22 +35,7 @@ public class MenuMusic : MonoBehaviour
         audioSource.playOnAwake = true;
         audioSource.spatialBlend = 0f;
         audioSource.volume = .7f;
-
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-
-        if(sceneName == "Menu" || sceneName == "Level 2")
-        {
-            Debug.Log("CHECK CHECK MENU AND LEVEL 2");
-            audioSource.clip = menuMusic;
-        }
-        else
-        {
-            audioSource.clip = normalLevelMusic;
-        }
-
-        audioSource.Play();
-
+        audioSource.clip = menuMusic;
     }
 
     void OnEnable()
@@ -89,9 +74,13 @@ AudioClip GetClipForScene(string sceneName)
     {
         return bossMusic;
     }
-    else
+    else if(sceneName == "Level1Room1" || sceneName == "Level1Room2")
     {
         return normalLevelMusic;
+    }
+    else
+    {
+        return menuMusic;
     }
 }
     

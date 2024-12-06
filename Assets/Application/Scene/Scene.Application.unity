@@ -438,6 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuMusic: {fileID: 8300000, guid: d1e17aeb0e90b264ba7dde6c297b025b, type: 3}
   normalLevelMusic: {fileID: 8300000, guid: 10cb26a97bc1f844cbc6a684864f56c1, type: 3}
+  bossMusic: {fileID: 8300000, guid: ce749bddf8cbd7b499f1c9593680a805, type: 3}
 --- !u!4 &80003369
 Transform:
   m_ObjectHideFlags: 0
@@ -778,7 +779,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494685188}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &494685190
 Camera:
   m_ObjectHideFlags: 0

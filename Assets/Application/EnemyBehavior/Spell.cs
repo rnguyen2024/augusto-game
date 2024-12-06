@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static OnChainStudios.FileTemplates.VisualScriptingTemplateFactory.MenuItemPaths.Variables;
 
 public class Spell : MonoBehaviour
 {
     private float distance;
-    private float attackDistance;
+    public float attackDistance;
     private Transform playerTransform;
     private Rigidbody2D rb2d;
     private Vector2 currentDirection;
@@ -14,6 +15,11 @@ public class Spell : MonoBehaviour
     public float castDuration;
     public float castInterval;
     public GameObject circlePrefab;
+    public float chaseDistance;
+    public Animator animator;
+    public float speed;
+
+    private bool isCasting = false;
 
     void Start()
     {
@@ -27,26 +33,55 @@ public class Spell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        distance = Vector2.Distance(transform.position, playerTransform.position);
 
+        if (distance < chaseDistance)
+        {
+            if (distance < attackDistance && !isCasting)
+            {
+                StartCoroutine(castSpellRoutine());
+            }
+        }
     }
 
     private IEnumerator castSpellRoutine()
     {
-        Vector2 shootDirection = (playerTransform.position - shootPoint.position).normalized;
+        isCasting = true; // Mark the enemy as currently casting
+
+        
         float timer = 0f;
         while (timer < castDuration)
         {
-            castSpell();
+            //animator.SetTrigger("Attack"); // Play attack animation (optional)
+            Debug.Log("Casting");
+            castSpell(); // Generate the prefab
             yield return new WaitForSeconds(castInterval);
             timer += castInterval;
         }
+        isCasting = false;
     }
 
     private void castSpell()
     {
-        GameObject spellCircle = Instantiate(circlePrefab);
+        rb2d.velocity = Vector2.zero; // Stop movement
+        animator.SetTrigger("Attack");
+        GameObject magicCircle = Instantiate(circlePrefab, shootPoint.position, Quaternion.identity);
+        magicCircle.GetComponent<magicCircle>().Initialize(transform);
     }
 
-    
+    void FlipEnemy(float directionX)
+    {
+        //Flip the character based on the horizontal movement direction
+        if (directionX > 0) //Moving right
+        {
+            transform.localScale = new Vector3(-4, 4, 1);
+        }
+        else if (directionX < 0) //Moving left
+        {
+            transform.localScale = new Vector3(4, 4, 1);
+        }
+
+    }
+
 }
 

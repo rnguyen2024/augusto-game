@@ -57,7 +57,7 @@ public class AIChase : MonoBehaviour
         if (collision.collider.CompareTag("Objects"))
         {
             //Stop movements
-            rb2d.velocity = Vector2.zero;
+            //rb2d.velocity = Vector2.zero;
         }
         //Checks if collision is with the player
         if (collision.gameObject.CompareTag("Player"))

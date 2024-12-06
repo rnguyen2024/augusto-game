@@ -164,6 +164,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   chaseDistance: 12
+<<<<<<< HEAD
+=======
+  animator: {fileID: 0}
+>>>>>>> main
 --- !u!70 &4733750190219576343
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

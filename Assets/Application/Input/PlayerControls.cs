@@ -13,6 +13,10 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     public Animator animator;
+<<<<<<< HEAD
+=======
+    public bool isStunned;
+>>>>>>> main
     
 
     //Start is called before the first frame update
@@ -25,6 +29,7 @@ public class PlayerControls : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         animator.SetFloat("BaseSpeed", Mathf.Abs(movement.x));
@@ -34,6 +39,32 @@ public class PlayerControls : MonoBehaviour
 
         if (movement.x != 0) //Checks if the player is moving horizontally
         {
+=======
+        if (isStunned == true)
+        {
+            animator.SetFloat("BaseSpeed", 0);
+            return; 
+        }
+
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        if (movement.magnitude > 1){
+
+            movement = movement.normalized;
+            
+        }
+    
+        
+        animator.SetFloat("BaseSpeed", Mathf.Abs(movement.y));
+        rb.MovePosition(rb.position + movement * currentSpeed * Time.fixedDeltaTime);
+        
+
+        
+        if (movement.x != 0) //Checks if the player is moving horizontally
+        {
+            animator.SetFloat("BaseSpeed", Mathf.Abs(movement.x));
+>>>>>>> main
             //Flip the character based on the horizontal movement direction
             if (movement.x > 0) //Moving right
             {
@@ -57,5 +88,29 @@ public class PlayerControls : MonoBehaviour
         Debug.Log("Removing slow effect.");
         currentSpeed = speed; // Restore speed
     }
+<<<<<<< HEAD
     
+=======
+
+    //Player cannot move
+    public void applyStun(float stunDuration)
+    {
+        
+        StartCoroutine(Stun(stunDuration));
+       
+    }
+
+    private IEnumerator Stun(float stunDuration)
+    {
+        isStunned = true;
+        float originalSpeed = currentSpeed; 
+        currentSpeed = 0;
+        animator.SetFloat("BaseSpeed", 0);
+
+        yield return new WaitForSeconds(stunDuration); 
+
+        currentSpeed = originalSpeed; 
+         isStunned = false;
+    }
+>>>>>>> main
 }

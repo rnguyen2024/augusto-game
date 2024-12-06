@@ -210,7 +210,11 @@ GameObject:
   - component: {fileID: 215536169}
   m_Layer: 6
   m_Name: Objects
+<<<<<<< HEAD
   m_TagString: Untagged
+=======
+  m_TagString: Objects
+>>>>>>> main
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,7 +274,11 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
+<<<<<<< HEAD
   m_SortingOrder: 2
+=======
+  m_SortingOrder: 3
+>>>>>>> main
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.078125, y: 1.78125, z: 0}
   m_MaxChunkCount: 16
@@ -900,6 +908,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevelIndex: 4
   prevRoom: 0
+<<<<<<< HEAD
+=======
+--- !u!212 &588300638 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 566978838143113952, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+  m_PrefabInstance: {fileID: 2452612883235855645}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> main
 --- !u!1 &641215876
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,7 +931,11 @@ GameObject:
   - component: {fileID: 641215881}
   m_Layer: 6
   m_Name: Walls
+<<<<<<< HEAD
   m_TagString: Untagged
+=======
+  m_TagString: Objects
+>>>>>>> main
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2294,6 +2314,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6766371440681769707, guid: 41c49f7f547a9204eb126b153cf1a452, type: 3}
   m_PrefabInstance: {fileID: 1692508155}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
+--- !u!212 &785042364 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3275303189422149904, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+  m_PrefabInstance: {fileID: 2452612883235855645}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> main
 --- !u!4 &833698750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6766371440681769707, guid: 41c49f7f547a9204eb126b153cf1a452, type: 3}
@@ -7579,10 +7607,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 2237492629845980280, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> main
     - target: {fileID: 2712045936273408272, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 2712045936273408272, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+>>>>>>> main
     - target: {fileID: 3952175818889068107, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
       propertyPath: animator
       value: 
@@ -7622,6 +7664,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2452612883235855646}
+<<<<<<< HEAD
+=======
+  sprite: {fileID: 785042364}
+  sprite2: {fileID: 588300638}
+>>>>>>> main
   maxHealth: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

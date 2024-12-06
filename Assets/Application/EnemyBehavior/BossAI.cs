@@ -5,17 +5,29 @@ public class BossAI : MonoBehaviour
 {
     public float speed;
     public float chaseDistance;
+<<<<<<< HEAD
     public float stopDuration; // Time spent stopping to shoot
     public float shootInterval; // Time between consecutive shots during the stop phase
     public GameObject projectilePrefab; // Prefab for the boss's projectile
     public Transform shootPoint; // The point where projectiles spawn
+=======
+    public float stopDuration; //Time spent stopping to shoot
+    public float shootInterval; //Time between consecutive shots during the stop phase
+    public GameObject projectilePrefab; //Prefab for the boss's projectile
+    public Transform shootPoint; //The point where projectiles spawn
+>>>>>>> main
     private float distance;
     private Transform playerTransform;
     private Rigidbody2D rb2d;
     private Vector2 currentDirection;
     private bool isStopping = false;
+<<<<<<< HEAD
     public float aoeRadius = 5f; // Radius of the AoE effect
     public float slowAmount = 0.5f; // How long the slow effect lasts
+=======
+    public float aoeRadius = 5f; //Radius of the AoE effect
+    public float slowAmount = 0.5f; //How long the slow effect lasts
+>>>>>>> main
 
     private float nextDamageTime;
 
@@ -31,7 +43,11 @@ public class BossAI : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         //rb2d.freezeRotation = true;
 
+<<<<<<< HEAD
         // Start the random stop-and-shoot coroutine
+=======
+        //Start the random stop-and-shoot coroutine
+>>>>>>> main
         StartCoroutine(RandomStopAndShoot());
     }
 
@@ -45,12 +61,20 @@ public class BossAI : MonoBehaviour
             {
                 Vector2 direction = (playerTransform.position - transform.position).normalized;
                 currentDirection = direction;
+<<<<<<< HEAD
                 animator.SetFloat("BaseSpeed", Mathf.Abs(direction.x));
+=======
+                animator.SetFloat("BaseSpeed", Mathf.Abs(direction.y));
+>>>>>>> main
                 rb2d.velocity = direction * speed;
 
                 //Checks for horizontal movement and flips accordingly
                 if(direction.x != 0)
                 {
+<<<<<<< HEAD
+=======
+                    animator.SetFloat("BaseSpeed", Mathf.Abs(direction.x));
+>>>>>>> main
                     FlipEnemy(direction.x);
                 }
             }

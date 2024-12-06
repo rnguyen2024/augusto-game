@@ -6,14 +6,26 @@ public class EnemyScript : MonoBehaviour
 {
     public Animator animator;
 
+<<<<<<< HEAD
     public int maxHealth = 100;
     int currentHealth;
     
+=======
+    public SpriteRenderer sprite;
+    public SpriteRenderer sprite2;
+    
+
+    public int maxHealth = 100;
+    int currentHealth;
+    
+    private bool isUnderDoT = false;
+>>>>>>> main
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+<<<<<<< HEAD
     }
 
     public void TakeDamage(int damage){
@@ -21,15 +33,62 @@ public class EnemyScript : MonoBehaviour
 
         animator.SetTrigger("Hurt");
 
+=======
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        
+        animator.SetTrigger("Hurt");
+        StartCoroutine(FlashRed());
+>>>>>>> main
         if(currentHealth <= 0){
             Die();
         }
     }
 
+<<<<<<< HEAD
     IEnumerator WaitAndExecute()
     {
         
         yield return new WaitForSeconds(1.0f); // Pause for 2 seconds
+=======
+    public void ApplyDamageOverTime(int damage, float duration)
+    {
+        // Prevent multiple overlapping DoT effects
+        if (!isUnderDoT)
+        {
+            StartCoroutine(DamageOverTimeCoroutine(damage, duration));
+        }
+    }
+
+    private IEnumerator DamageOverTimeCoroutine(int damage, float duration)
+    {
+        isUnderDoT = true;
+        yield return new WaitForSeconds(1f);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            TakeDamage(damage);
+            yield return new WaitForSeconds(1f);
+            elapsedTime += 1f;
+        }
+
+        isUnderDoT = false;
+    }
+
+    IEnumerator WaitAndExecute()
+    {
+        
+        yield return new WaitForSeconds(1.0f); // Pause for 1 seconds
+>>>>>>> main
         gameObject.SetActive(false);
     }
 
@@ -39,7 +98,36 @@ public class EnemyScript : MonoBehaviour
         StartCoroutine(WaitAndExecute());
         
         GetComponent<CapsuleCollider2D>().enabled = false;
+<<<<<<< HEAD
         GetComponent<AIChase>().enabled = false;
+=======
+
+        // Check if AIChase exists and disable it, otherwise check for BossAI
+        AIChase aiChase = GetComponent<AIChase>();
+        if (aiChase != null)
+        {
+            aiChase.enabled = false;
+        }
+        else
+        {
+            Enemy3AI enemy3AI = GetComponent<Enemy3AI>();
+                if (enemy3AI != null)
+                {
+                    enemy3AI.enabled = false;
+                }
+
+            else
+            {
+                BossAI bossAI = GetComponent<BossAI>();
+            if (bossAI != null)
+            {
+                bossAI.enabled = false;
+            }
+            }
+        }
+       
+        
+>>>>>>> main
         GetComponent<EnemyScript>().enabled = false;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
@@ -50,4 +138,19 @@ public class EnemyScript : MonoBehaviour
         
         this.enabled = false;
     }
+<<<<<<< HEAD
 }
+=======
+
+    public IEnumerator FlashRed(){
+        sprite.color = Color.red;
+        sprite2.color = Color.red;
+        
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+        sprite2.color = Color.white;
+        
+    }
+}
+
+>>>>>>> main

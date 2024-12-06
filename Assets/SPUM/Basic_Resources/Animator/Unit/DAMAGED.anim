@@ -1128,6 +1128,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
+<<<<<<< HEAD
+=======
+      path: 641910099
+>>>>>>> main
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -1136,7 +1140,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
+<<<<<<< HEAD
       path: 641910099
+=======
+>>>>>>> main
       path: 292248403
       attribute: 1
       script: {fileID: 0}
@@ -5112,7 +5119,11 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
+<<<<<<< HEAD
     path: Root/BodySet/P_Body/HeadSet/P_Head/P_Eye/P_RClose
+=======
+    path: Root/P_RFoot
+>>>>>>> main
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5124,7 +5135,11 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
+<<<<<<< HEAD
     path: Root/BodySet/P_Body/HeadSet/P_Head/P_Eye/P_RClose
+=======
+    path: Root/P_RFoot
+>>>>>>> main
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5136,7 +5151,11 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
+<<<<<<< HEAD
     path: Root/BodySet/P_Body/HeadSet/P_Head/P_Eye/P_RClose
+=======
+    path: Root/P_RFoot
+>>>>>>> main
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5400,7 +5419,11 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
+<<<<<<< HEAD
     path: Root/P_RFoot
+=======
+    path: Root/BodySet/P_Body/HeadSet/P_Head/P_Eye/P_RClose
+>>>>>>> main
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5412,7 +5435,11 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
+<<<<<<< HEAD
     path: Root/P_RFoot
+=======
+    path: Root/BodySet/P_Body/HeadSet/P_Head/P_Eye/P_RClose
+>>>>>>> main
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -5424,7 +5451,11 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
+<<<<<<< HEAD
     path: Root/P_RFoot
+=======
+    path: Root/BodySet/P_Body/HeadSet/P_Head/P_Eye/P_RClose
+>>>>>>> main
     classID: 4
     script: {fileID: 0}
     flags: 0

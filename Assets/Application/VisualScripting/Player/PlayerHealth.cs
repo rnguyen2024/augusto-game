@@ -22,6 +22,12 @@ public class PlayerHealth : MonoBehaviour
      private float collisionCooldown = 0.8f; //Cooldown time between damage
      private bool canTakeDamage = true; 
 
+<<<<<<< HEAD
+=======
+    public SpriteRenderer sprite;
+    public SpriteRenderer sprite2;
+
+>>>>>>> main
     void Start()
     {
         currentHealth = maxHealth;
@@ -40,6 +46,10 @@ public class PlayerHealth : MonoBehaviour
         {
         currentHealth -= damage;
         animator.SetTrigger("Hurt"); //Plays "Hurt" animation
+<<<<<<< HEAD
+=======
+        StartCoroutine(FlashRed());
+>>>>>>> main
         healthBar.setHealth(currentHealth);
 
         if (currentHealth <= 0)
@@ -117,4 +127,17 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(collisionCooldown);
         canTakeDamage = true;
     }
+<<<<<<< HEAD
+=======
+
+    public IEnumerator FlashRed(){
+        sprite.color = Color.red;
+        sprite2.color = Color.red;
+        
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+        sprite2.color = Color.white;
+        
+    }
+>>>>>>> main
 }

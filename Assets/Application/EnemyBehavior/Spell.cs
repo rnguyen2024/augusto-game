@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,10 @@ public class Spell : MonoBehaviour
     private Rigidbody2D rb2d;
     private Vector2 currentDirection;
     public Transform shootPoint;
+    public float castDuration;
+    public float castInterval;
+    public GameObject circlePrefab;
+
     void Start()
     {
         GameObject player = GameObject.FindWithTag("Player");
@@ -22,16 +27,24 @@ public class Spell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private IEnumerator castSpell()
+    private IEnumerator castSpellRoutine()
     {
         Vector2 shootDirection = (playerTransform.position - shootPoint.position).normalized;
-        while (true)
+        float timer = 0f;
+        while (timer < castDuration)
         {
+            castSpell();
+            yield return new WaitForSeconds(castInterval);
+            timer += castInterval;
+        }
+    }
 
-        }    
+    private void castSpell()
+    {
+        GameObject spellCircle = Instantiate(circlePrefab);
     }
 
     

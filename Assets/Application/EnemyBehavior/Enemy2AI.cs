@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class Enemy2AI : MonoBehaviour
 {
     public Animator animator;
+    public SpriteRenderer sprite;
+    public SpriteRenderer sprite2;
 
     public int maxHealth = 100;
     int currentHealth;
-
+    private bool isUnderDoT = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +24,37 @@ public class Enemy2AI : MonoBehaviour
         currentHealth -= damage;
 
         animator.SetTrigger("Hurt");
+        StartCoroutine(FlashRed());
 
         if (currentHealth <= 0)
         {
             Die();
         }
+    }
+
+    public void ApplyDamageOverTime(int damage, float duration)
+    {
+        // Prevent multiple overlapping DoT effects
+        if (!isUnderDoT)
+        {
+            StartCoroutine(DamageOverTimeCoroutine(damage, duration));
+        }
+    }
+
+    private IEnumerator DamageOverTimeCoroutine(int damage, float duration)
+    {
+        isUnderDoT = true;
+        yield return new WaitForSeconds(1f);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            TakeDamage(damage);
+            yield return new WaitForSeconds(1f);
+            elapsedTime += 1f;
+        }
+
+        isUnderDoT = false;
     }
 
     IEnumerator WaitAndExecute()
@@ -52,6 +81,17 @@ public class Enemy2AI : MonoBehaviour
         }
 
         this.enabled = false;
+    }
+
+    public IEnumerator FlashRed()
+    {
+        sprite.color = Color.red;
+        sprite2.color = Color.red;
+
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+        sprite2.color = Color.white;
+
     }
 
 }

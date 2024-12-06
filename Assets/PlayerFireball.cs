@@ -49,7 +49,24 @@ public class PlayerFireball : MonoBehaviour
             Destroy(gameObject);
         }
 
-         if (collision.CompareTag("Objects"))
+        if (collision.CompareTag("Enemy2"))
+        {
+            Debug.Log("Fireball hit an enemy!");
+
+            Enemy2AI enemy2 = collision.GetComponent<Enemy2AI>();
+            if (enemy2 != null)
+            {
+                //Apply impact damage immediately
+                enemy2.TakeDamage(impactDamage);
+
+                //Start the DoT effect on the enemy
+                enemy2.ApplyDamageOverTime(damageOverTime, dotDuration);
+            }
+
+            Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("Objects"))
         {
             Destroy(gameObject);
         }

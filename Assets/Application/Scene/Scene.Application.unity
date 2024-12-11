@@ -2845,6 +2845,7 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 0
   healthBar: {fileID: 59155622}
+  isPoisoned: 0
   sprite: {fileID: 920612887}
   sprite2: {fileID: 588300638}
 --- !u!114 &1769434927
@@ -3022,7 +3023,7 @@ MonoBehaviour:
   fireballPrefab: {fileID: 4066276789573592775, guid: eff7257c2e0a05c43873fcfcbc67e06a, type: 3}
   fireballSpawnPoint: {fileID: 841402063}
   fireballSpeed: 10
-  fireballImpactDamage: 50
+  fireballImpactDamage: 60
   fireballDamageOverTime: 25
   fireballDOTDuration: 3
   fireballLifetime: 5

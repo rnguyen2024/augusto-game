@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIChase : MonoBehaviour
+public class AIBehavior4 : MonoBehaviour
 {
     public float speed;
-    public float wanderSpeed = .2f;
     public float chaseDistance;
+    public float chargeSpeed;
+    public float chargeDistance;
     private float distance;
 
     private Transform playerTransform;
     private Rigidbody2D rb2d;
     private Vector2 currentDirection;
-    private bool isWandering = false;
+    private bool isCharging = false;
 
     public Animator animator;
     // Start is called before the first frame update
@@ -23,8 +24,6 @@ public class AIChase : MonoBehaviour
 
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.freezeRotation = true; //Prevents rotations when colliding
-
-        StartCoroutine(RandomWandering());
         
     }
 
@@ -34,12 +33,16 @@ public class AIChase : MonoBehaviour
         //Finds distance between two transforms in this case object with script and player
         distance = Vector2.Distance(transform.position, playerTransform.position);
 
-        if(!isWandering){
+        if (!isCharging)
+        {
+            if (distance < chargeDistance)
+            {
+                StartCoroutine(ChargeAtPlayer());
+            }
             //Checks if distance is close enough for enemy to chase, if it is then it updates the position to the players position
-            if(distance < chaseDistance)
+            else if(distance < chaseDistance)
             {
                 Vector2 direction = (playerTransform.position - transform.position).normalized;
-                currentDirection = direction; //Save direction to use if collision occurs
                 animator.SetFloat("BaseSpeed", Mathf.Abs(direction.y));
                 rb2d.velocity = direction * speed;
 
@@ -69,11 +72,11 @@ public class AIChase : MonoBehaviour
         //Checks if collision is with the player
         if (collision.gameObject.CompareTag("Player"))
         {
-            animator.SetTrigger("Attack");
+            //animator.SetTrigger("Attack");
         }
     }
 
-     void FlipEnemy(float directionX)
+         void FlipEnemy(float directionX)
     {
         //Flip the character based on the horizontal movement direction
         if (directionX > 0) //Moving right
@@ -84,41 +87,40 @@ public class AIChase : MonoBehaviour
         {
             transform.localScale = new Vector3(3, 3, 1);
         }
+
     }
 
-    private IEnumerator RandomWandering()
+    private IEnumerator ChargeAtPlayer()
     {
-        float wanderRange = 5f;
-        yield return new WaitForSeconds(Random.Range(0f, 2f)); //Random delay to desync enemies
+        isCharging = true;
+        float chargeDuration = 2f;
+        float elapsedTime = 0f;
+        //rb2d.mass = 51f;
+        
+        //Calculate direction to player
+        Vector2 chargeDirection = (playerTransform.position - transform.position).normalized;
 
-        while(true)
+        //Flip enemy based on charge direction
+        if (chargeDirection.x != 0) 
         {
-            yield return new WaitForSeconds(Random.Range(4f, 6f));
-
-            distance = Vector2.Distance(transform.position, playerTransform.position);
-            if (distance < wanderRange)
-            {
-            isWandering = true; 
-            Vector2 directionAwayFromPlayer = (transform.position - playerTransform.position).normalized;
-            animator.speed = 0.45f;
-    
-            Vector2 backingOffDirection =  new Vector2(directionAwayFromPlayer.x * 0.7f, directionAwayFromPlayer.y).normalized;
-            float wanderDuration = 0.7f;
-            float elapsedTime = 0f;
-
-            while (elapsedTime < wanderDuration)
-            {
-                rb2d.velocity = backingOffDirection * wanderSpeed;
-                animator.SetFloat("BaseSpeed", Mathf.Abs(backingOffDirection.magnitude));
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            animator.speed = 1f;
-            isWandering = false;
-            rb2d.velocity = Vector2.zero;
-            animator.SetFloat("BaseSpeed", 0);
+            FlipEnemy(chargeDirection.x);
         }
+
+        while (elapsedTime < chargeDuration)
+        {
+            rb2d.velocity = chargeDirection * chargeSpeed;
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
+
+        rb2d.velocity = Vector2.zero; //Stop after charging
+        animator.SetFloat("BaseSpeed", 0);
+        rb2d.mass = 5000f;
+
+        yield return new WaitForSeconds(1f); //Cooldown after charging
+        animator.SetFloat("BaseSpeed", Mathf.Abs(chargeDirection.y));
+        animator.SetFloat("BaseSpeed", Mathf.Abs(chargeDirection.x));
+        isCharging = false;
+        rb2d.mass = 51f;;
     }
 }

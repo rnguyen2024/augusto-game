@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
 
      private float collisionCooldown = 0.8f; //Cooldown time between damage
      private bool canTakeDamage = true; 
+     public bool isPoisoned = false;
 
     public SpriteRenderer sprite;
     public SpriteRenderer sprite2;
@@ -43,7 +44,15 @@ public class PlayerHealth : MonoBehaviour
         {
         currentHealth -= damage;
         animator.SetTrigger("Hurt"); //Plays "Hurt" animation
-        StartCoroutine(FlashRed());
+        if(isPoisoned)
+        {
+            StartCoroutine(FlashPurple());
+        }
+        else
+        {
+            StartCoroutine(FlashRed());
+        }
+
         healthBar.setHealth(currentHealth);
 
         if (currentHealth <= 0)
@@ -125,6 +134,16 @@ public class PlayerHealth : MonoBehaviour
     public IEnumerator FlashRed(){
         sprite.color = Color.red;
         sprite2.color = Color.red;
+        
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+        sprite2.color = Color.white;
+        
+    }
+
+    public IEnumerator FlashPurple(){
+        sprite.color = new Color(0.6f, 0f, 0.8f); //Purple
+        sprite2.color = new Color(0.6f, 0f, 0.8f); //Purple
         
         yield return new WaitForSeconds(0.1f);
         sprite.color = Color.white;

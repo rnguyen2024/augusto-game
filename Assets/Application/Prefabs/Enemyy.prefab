@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3952175818889068107}
   - component: {fileID: 6003285580410818784}
   m_Layer: 7
-  m_Name: Enemy 1
+  m_Name: Enemyy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  wanderSpeed: 2
   chaseDistance: 12
+  animator: {fileID: 0}
 --- !u!70 &6003285580410818784
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

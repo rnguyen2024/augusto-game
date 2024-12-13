@@ -3630,6 +3630,7 @@ GameObject:
   - component: {fileID: 2044858312}
   - component: {fileID: 2044858311}
   - component: {fileID: 2044858310}
+  - component: {fileID: 2044858313}
   m_Layer: 0
   m_Name: FireballTimer
   m_TagString: Untagged
@@ -3698,6 +3699,19 @@ RectTransform:
   m_AnchoredPosition: {x: 826, y: 436}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2044858313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044858309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc46953ea167d894f9d9de4fe1a7f487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScene: 1
 --- !u!1 &2067449883
 GameObject:
   m_ObjectHideFlags: 0

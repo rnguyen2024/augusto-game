@@ -182,7 +182,7 @@ public class Boss2AI : MonoBehaviour
         yield return new WaitForSeconds(duration); // Wait for a moment (duration of knockback)
         movement.enabled = true;   // Re-enable movement script
     }
-    
-    
+
+   
 }
 }

@@ -94,4 +94,14 @@ public class PlayerControls : MonoBehaviour
         currentSpeed = originalSpeed; 
          isStunned = false;
     }
+
+    public void setStun()
+    {
+        isStunned = true;
+    }
+
+    public void unsetStun()
+    {
+        isStunned = false;
+    }
 }

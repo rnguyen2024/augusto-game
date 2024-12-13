@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RoomManager : MonoBehaviour
+public class RoomManager2 : MonoBehaviour
 {
-
     private int sceneIndex;
     private bool prevRoom;
     private loadscreeen loadScreen;
@@ -14,24 +13,25 @@ public class RoomManager : MonoBehaviour
     {
         loadScreen = FindObjectOfType<loadscreeen>();
 
-        if (SceneManager.GetActiveScene().buildIndex != 0 && !SceneManager.GetSceneByBuildIndex(1).isLoaded)
+        Debug.Log("Loading lvl2");
+
+        if (SceneManager.GetActiveScene().buildIndex != 0 && !SceneManager.GetSceneByBuildIndex(2).isLoaded)
         {
-            SceneManager.LoadScene(1, LoadSceneMode.Additive);
+            SceneManager.LoadScene(2, LoadSceneMode.Additive);
         }
 
-        sceneIndex = 3;
+        sceneIndex = 6;
         prevRoom = false;
-        loadScreen.Transition();
         //loadRoom(sceneIndex, prevRoom);
     }
 
     public void loadRoom(int sceneIndex, bool prevRoom)
     {
         loadScreen.Transition();
-       
+
         SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
 
-        if (sceneIndex > 3 && !prevRoom)
+        if (sceneIndex > 6 && !prevRoom)
         {
             SceneManager.UnloadSceneAsync(sceneIndex - 1);
         }
@@ -42,5 +42,3 @@ public class RoomManager : MonoBehaviour
 
     }
 }
-
-

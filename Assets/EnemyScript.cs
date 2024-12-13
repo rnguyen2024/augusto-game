@@ -9,7 +9,7 @@ public class EnemyScript : MonoBehaviour
     public SpriteRenderer sprite;
     public SpriteRenderer sprite2;
 
-    public GameObject levelComplete;
+    
     
 
     public int maxHealth = 100;
@@ -98,9 +98,6 @@ public class EnemyScript : MonoBehaviour
             if (bossAI != null)
             {
                 bossAI.enabled = false;
-                    
-                    PlayerControls playerControls = GetComponent<PlayerControls>();
-                    
             }
             }
         }
@@ -113,7 +110,6 @@ public class EnemyScript : MonoBehaviour
         rb.velocity = Vector2.zero; // Stop any movement
         rb.isKinematic = true;     // Disable physics interactions
         }
-        
         this.enabled = false;
     }
 

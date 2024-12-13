@@ -872,6 +872,8 @@ MonoBehaviour:
   animator: {fileID: 63511790}
   maxHealth: 50
   currentHealth: 0
+  hitLevel2: 0
+  hasShield: 0
   healthBar: {fileID: 1284954307}
   isPoisoned: 0
   sprite: {fileID: 63511789}

@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     private int currentScene;
     public bool hitLevel2 = false;
+    public bool hasShield = false;
+    private GameObject shieldIcon;
 
     //References the healthbar class so that it can be interacted with here. 
     public HealthBarScript healthBar;
@@ -31,17 +33,23 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
+        shieldIcon = GameObject.Find("ShieldStatus");
+        shieldIcon.SetActive(false);
     }
 
     void Update()
     {
-
+        if ( hasShield == true && Input.GetKeyDown(KeyCode.Q))
+        {
+            StartCoroutine(noDamage(5f));
+            
+        }
 
     }
 
     public void takeDamage(int damage)
     {
-        if (canTakeDamage)
+        if (canTakeDamage == true)
         {
             currentHealth -= damage;
             animator.SetTrigger("Hurt"); //Plays "Hurt" animation
@@ -173,5 +181,19 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.setHealth(currentHealth);
+    }
+
+    public void setShield()
+    {
+        hasShield = true;
+        shieldIcon.SetActive(true);
+    }
+
+    private IEnumerator noDamage(float shieldTime)
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(shieldTime);
+        canTakeDamage = true;
+        shieldIcon.SetActive(false);
     }
 }

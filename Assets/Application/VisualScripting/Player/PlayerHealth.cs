@@ -192,8 +192,12 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator noDamage(float shieldTime)
     {
         canTakeDamage = false;
+        sprite.color = new Color(0.5f, 0.7f, 1f); // Light Blue
+        sprite2.color = new Color(0.5f, 0.7f, 1f); // Light Blue
         yield return new WaitForSeconds(shieldTime);
         canTakeDamage = true;
         shieldIcon.SetActive(false);
+        sprite.color = Color.white;
+        sprite2.color = Color.white;
     }
 }

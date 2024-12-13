@@ -31,7 +31,7 @@ public class PlayerFireballAbility : MonoBehaviour
 
     private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && canShootFireball)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && canShootFireball)
         {
             ShootFireball();
         }
@@ -39,43 +39,26 @@ public class PlayerFireballAbility : MonoBehaviour
 
     private void ShootFireball()
     {
-         if (fireballSFX != null && sfxSource != null)
-        {
-            sfxSource.PlayOneShot(fireballSFX);
-        }
+        
+        sfxSource.PlayOneShot(fireballSFX);
 
         //Get mouse position in world coordinates
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = Mathf.Abs(Camera.main.transform.position.z);
-        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 directionToCursor = (worldMousePosition - fireballSpawnPoint.position).normalized;
 
         GameObject fireball = Instantiate(fireballPrefab, fireballSpawnPoint.position, Quaternion.identity);
-
-        //Initialize the fireball's direction and properties
-        PlayerFireball fireballScript = fireball.GetComponent<PlayerFireball>();
-        if (fireballScript != null)
-        {
-            fireballScript.Initialize(directionToCursor, fireballSpeed, fireballImpactDamage, fireballDamageOverTime, fireballDOTDuration, fireballLifetime);
-        }
+        fireball.GetComponent<PlayerFireball>()?.Initialize(directionToCursor, fireballSpeed, fireballImpactDamage, fireballDamageOverTime, fireballDOTDuration, fireballLifetime);
 
         StartCoroutine(FireballCooldown());
+
     }
 
-    private IEnumerator FireballCooldown()
+     private IEnumerator FireballCooldown()
     {
         canShootFireball = false;
-        DisableTargetGameObject();
+        fireballTimer?.SetActive(false);
         yield return new WaitForSeconds(fireballCooldown);
         canShootFireball = true;
-        EnableTargetGameObject();
-    }
-
-    void DisableTargetGameObject(){
-        fireballTimer.SetActive(false);
-    }
-
-    void EnableTargetGameObject(){
-        fireballTimer.SetActive(true);
+        fireballTimer?.SetActive(true);
     }
 }

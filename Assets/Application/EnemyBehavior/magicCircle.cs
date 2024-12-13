@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class magicCircle : MonoBehaviour
+public class MagicCircle : MonoBehaviour
 {
     public float lifeTime;
     private Transform caster;

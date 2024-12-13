@@ -69,7 +69,7 @@ public class Spell : MonoBehaviour
     {
         animator.SetTrigger("Attack");
         GameObject magicCircle = Instantiate(circlePrefab, shootPoint.position, Quaternion.identity);
-        magicCircle.GetComponent<magicCircle>().Initialize(transform);
+        magicCircle.GetComponent<MagicCircle>().Initialize(transform);
     }
 
     void FlipEnemy(float directionX)

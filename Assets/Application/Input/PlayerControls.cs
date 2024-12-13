@@ -14,6 +14,7 @@ public class PlayerControls : MonoBehaviour
     private Vector2 movement;
     public Animator animator;
     public bool isStunned;
+    private RigidbodyConstraints2D originalConstraints;
     
 
     //Start is called before the first frame update
@@ -88,10 +89,30 @@ public class PlayerControls : MonoBehaviour
         float originalSpeed = currentSpeed; 
         currentSpeed = 0;
         animator.SetFloat("BaseSpeed", 0);
+        originalConstraints = rb.constraints;
 
-        yield return new WaitForSeconds(stunDuration); 
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+
+
+        yield return new WaitForSeconds(stunDuration);
+
+        rb.constraints = originalConstraints;
 
         currentSpeed = originalSpeed; 
          isStunned = false;
     }
+    public void TakeKnockback(Vector2 knockbackDirection, float knockbackForce, string tag)
+    {
+        Debug.Log($"Knockback applied: Direction = {knockbackDirection}, Force = {knockbackForce}");
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null){
+            if(tag == "Boss"){
+                rb.AddForce(knockbackDirection.normalized * knockbackForce, ForceMode2D.Impulse);
+            }
+        }
+    }
+
+    
+    
+
 }

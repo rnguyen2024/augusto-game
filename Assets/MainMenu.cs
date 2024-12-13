@@ -22,12 +22,26 @@ public class MainMenu : MonoBehaviour
     public void startPlay()
     {
         SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3, LoadSceneMode.Additive);
     }
 
     //Loads Level 2
     public void startLevel2()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(6, LoadSceneMode.Additive);
+    }
+
+    public void startLevel1Boss()
+    {
+        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(5, LoadSceneMode.Additive);
+    }
+
+    public void startLevel2Boss()
+    {
+        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(9, LoadSceneMode.Additive);
     }
 
     public void quitPlay()

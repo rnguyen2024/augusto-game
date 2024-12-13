@@ -21,7 +21,8 @@ public class RoomManager : MonoBehaviour
 
         sceneIndex = 3;
         prevRoom = false;
-        loadRoom(sceneIndex, prevRoom);
+        loadScreen.Transition();
+        //loadRoom(sceneIndex, prevRoom);
     }
 
     public void loadRoom(int sceneIndex, bool prevRoom)

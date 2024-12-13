@@ -70,11 +70,11 @@ AudioClip GetClipForScene(string sceneName)
     {
         return menuMusic;
     }
-    else if (sceneName == "Level1Room3")
+    else if (sceneName == "Level1Room3" || sceneName == "Level2Room5")
     {
         return bossMusic;
     }
-    else if(sceneName == "Level1Room1" || sceneName == "Level1Room2")
+    else if(sceneName == "Level1Room1" || sceneName == "Level1Room2" || sceneName == "Level2Room1" || sceneName == "Level2Room2" || sceneName == "Level2Room3" || sceneName == "Level2Room4")
     {
         return normalLevelMusic;
     }

@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Application/Scene/Level2Room1.unity
     guid: a4ecc3a35c10a73449ac24dea0e539e6
   - enabled: 1
+    path: Assets/Application/Scene/Level2Room2.unity
+    guid: 1a5486dc56393224187de57ffb792c3c
+  - enabled: 1
     path: Assets/Application/Scene/LevelComplete.unity
     guid: ff29d6817e79ea04c9e54e1f08e30c48
   m_configObjects: {}

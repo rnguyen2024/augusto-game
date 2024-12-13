@@ -29,12 +29,19 @@ public class PlayerHealth : MonoBehaviour
     public SpriteRenderer sprite;
     public SpriteRenderer sprite2;
 
+    //Audio source for playing damage sound
+    private AudioSource audioSource;
+    public AudioClip damageSound;
+
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
         shieldIcon = GameObject.Find("ShieldStatus");
         shieldIcon.SetActive(false);
+
+        //Gets AudioSource
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -52,7 +59,15 @@ public class PlayerHealth : MonoBehaviour
         if (canTakeDamage == true)
         {
             currentHealth -= damage;
-            animator.SetTrigger("Hurt"); //Plays "Hurt" animation
+
+            //Plays damage sound
+            if (audioSource != null && damageSound != null)
+            {
+                audioSource.PlayOneShot(damageSound);
+            }
+
+            //Plays "Hurt" animation
+            animator.SetTrigger("Hurt");
             if (isPoisoned)
             {
                 StartCoroutine(FlashPurple());

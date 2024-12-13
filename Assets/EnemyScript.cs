@@ -8,6 +8,8 @@ public class EnemyScript : MonoBehaviour
 
     public SpriteRenderer sprite;
     public SpriteRenderer sprite2;
+
+    public GameObject levelComplete;
     
 
     public int maxHealth = 100;
@@ -96,6 +98,9 @@ public class EnemyScript : MonoBehaviour
             if (bossAI != null)
             {
                 bossAI.enabled = false;
+                    
+                    PlayerControls playerControls = GetComponent<PlayerControls>();
+                    
             }
             }
         }

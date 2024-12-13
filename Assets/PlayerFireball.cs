@@ -32,7 +32,7 @@ public class PlayerFireball : MonoBehaviour
     {
         Debug.Log("Fireball collided with: " + collision.gameObject.name); //Debug line to check collision
 
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
+        if (collision.CompareTag("Enemy"))
         {
             Debug.Log("Fireball hit an enemy!");
 

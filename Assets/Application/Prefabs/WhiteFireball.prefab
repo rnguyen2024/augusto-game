@@ -77,7 +77,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
+<<<<<<< HEAD:Assets/Application/Prefabs/WhiteFireball.prefab
   m_Sprite: {fileID: 21300000, guid: 6a602b99f49b8294eae722d7ae2eee85, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: f3d2e0ad6ab9ce74f99925e4a15c16de, type: 3}
+>>>>>>> parent of effe1a4 (Merge branch 'RN_Branch' into RN_Merge):Assets/Application/Prefabs/Blue Fireball.prefab
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +102,11 @@ Animator:
   m_GameObject: {fileID: 4066276789573592775}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
+<<<<<<< HEAD:Assets/Application/Prefabs/WhiteFireball.prefab
   m_Controller: {fileID: 9100000, guid: a01ed17bff39ddc4883e7c2235c2d8eb, type: 2}
+=======
+  m_Controller: {fileID: 9100000, guid: ededb06b3eeb630468b64534458318a6, type: 2}
+>>>>>>> parent of effe1a4 (Merge branch 'RN_Branch' into RN_Merge):Assets/Application/Prefabs/Blue Fireball.prefab
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

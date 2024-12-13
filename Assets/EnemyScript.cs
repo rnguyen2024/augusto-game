@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
@@ -10,7 +11,7 @@ public class EnemyScript : MonoBehaviour
     public SpriteRenderer sprite;
     public SpriteRenderer sprite2;
 
-    
+    public GameObject gameComplete;
     
 
     public int maxHealth = 100;
@@ -131,6 +132,7 @@ public class EnemyScript : MonoBehaviour
         else if (AIBOSS2 != null)
         {
             AIBOSS2.enabled = false;
+            StartCoroutine(waitforDeath());
         }
         
         StartCoroutine(WaitAndExecute());
@@ -146,6 +148,12 @@ public class EnemyScript : MonoBehaviour
         sprite.color = Color.white;
         sprite2.color = Color.white;
         
+    }
+
+    private IEnumerator waitforDeath()
+    {
+        yield return new WaitForSeconds(0.8f);
+        gameComplete.SetActive(true);
     }
 }
 

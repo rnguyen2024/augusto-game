@@ -41,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if ( hasShield == true && Input.GetKeyDown(KeyCode.Q))
         {
-            StartCoroutine(noDamage(5f));
+            StartCoroutine(noDamage(8f));
             
         }
 

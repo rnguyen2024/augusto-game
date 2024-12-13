@@ -12,6 +12,9 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 50;
     public int currentHealth;
     private int currentScene;
+    public bool hitLevel2 = false;
+    public bool hasShield = false;
+    private GameObject shieldIcon;
 
     //References the healthbar class so that it can be interacted with here. 
     public HealthBarScript healthBar;
@@ -30,40 +33,58 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
+        shieldIcon = GameObject.Find("ShieldStatus");
+        shieldIcon.SetActive(false);
     }
 
     void Update()
     {
-
+        if ( hasShield == true && Input.GetKeyDown(KeyCode.Q))
+        {
+            StartCoroutine(noDamage(5f));
+            
+        }
 
     }
 
     public void takeDamage(int damage)
     {
-        if (canTakeDamage)
+        if (canTakeDamage == true)
         {
-        currentHealth -= damage;
-        animator.SetTrigger("Hurt"); //Plays "Hurt" animation
-        if(isPoisoned)
-        {
-            StartCoroutine(FlashPurple());
-        }
-        else
-        {
-            StartCoroutine(FlashRed());
-        }
+            currentHealth -= damage;
+            animator.SetTrigger("Hurt"); //Plays "Hurt" animation
+            if (isPoisoned)
+            {
+                StartCoroutine(FlashPurple());
+            }
+            else
+            {
+                StartCoroutine(FlashRed());
+            }
 
-        healthBar.setHealth(currentHealth);
+            healthBar.setHealth(currentHealth);
 
-        if (currentHealth <= 0)
-        {
-            Debug.Log("Player Died!");
-            //Death logic here!
-            animator.SetBool("IsDead", true);
-            currentScene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentScene);
+            if (currentHealth <= 0)
+            {
+                Debug.Log("Player Died!");
+                //Death logic here!
+                animator.SetBool("IsDead", true);
+                currentScene = SceneManager.GetActiveScene().buildIndex;
+                Debug.Log("Current Scene " + currentScene);
 
-        }
+                SceneManager.LoadScene(1);
+
+                SceneManager.LoadScene(currentScene);
+                if (hitLevel2 == false)
+                {
+                    SceneManager.LoadScene(3, LoadSceneMode.Additive);
+                }
+
+                if (hitLevel2 == true)
+                {
+                    SceneManager.LoadScene(6, LoadSceneMode.Additive);
+                }
+            }
         }
     }
 
@@ -149,5 +170,34 @@ public class PlayerHealth : MonoBehaviour
         sprite.color = Color.white;
         sprite2.color = Color.white;
         
+    }
+
+    public void setLvl2()
+    {
+        hitLevel2 = true;
+    }
+
+    public void setPlayerHealth()
+    {
+        currentHealth = maxHealth;
+        healthBar.setHealth(currentHealth);
+    }
+
+    public void setShield()
+    {
+        hasShield = true;
+        shieldIcon.SetActive(true);
+    }
+
+    private IEnumerator noDamage(float shieldTime)
+    {
+        canTakeDamage = false;
+        sprite.color = new Color(0.5f, 0.7f, 1f); // Light Blue
+        sprite2.color = new Color(0.5f, 0.7f, 1f); // Light Blue
+        yield return new WaitForSeconds(shieldTime);
+        canTakeDamage = true;
+        shieldIcon.SetActive(false);
+        sprite.color = Color.white;
+        sprite2.color = Color.white;
     }
 }

@@ -18,7 +18,7 @@ public class level2Flag : MonoBehaviour
             Debug.Log("Lvl 2 flag set");
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             playerHealth.setLvl2();
-
+            playerHealth.setPlayerHealth();
         }
     }
 }

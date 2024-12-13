@@ -168,4 +168,10 @@ public class PlayerHealth : MonoBehaviour
     {
         hitLevel2 = true;
     }
+
+    public void setPlayerHealth()
+    {
+        currentHealth = maxHealth;
+        healthBar.setHealth(currentHealth);
+    }
 }

@@ -98,7 +98,7 @@ public class EnemyScript : MonoBehaviour
             if (bossAI != null)
             {
                 bossAI.enabled = false;
-                    levelComplete.SetActive(true);
+                    
                     PlayerControls playerControls = GetComponent<PlayerControls>();
                     
             }

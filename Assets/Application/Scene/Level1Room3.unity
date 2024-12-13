@@ -5337,8 +5337,8 @@ Transform:
   m_GameObject: {fileID: 1690733075}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.002, y: 0.358, z: 0}
-  m_LocalScale: {x: 1.1006321, y: 0.8127001, z: 0}
+  m_LocalPosition: {x: -0.012, y: 0.397, z: 0}
+  m_LocalScale: {x: 1.0410517, y: 0.98077273, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1720085913}
@@ -5417,14 +5417,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d839d211b974947852662f911cc0d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 4
   chaseDistance: 17
   stopDuration: 3
   shootInterval: 1
   projectilePrefab: {fileID: 4066276789573592775, guid: 14402899e2965324bacf8dfe92c051e4, type: 3}
   shootPoint: {fileID: 955072836}
-  aoeRadius: 3
-  slowAmount: 0.5
+  aoeRadius: 2.5
+  slowAmount: 0.56
   animator: {fileID: 833808055}
 --- !u!114 &1720085919
 MonoBehaviour:

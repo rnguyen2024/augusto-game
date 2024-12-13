@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -9,7 +10,7 @@ public class EnemyScript : MonoBehaviour
     public SpriteRenderer sprite;
     public SpriteRenderer sprite2;
 
-    
+    public GameObject gameComplete;
     
 
     public int maxHealth = 100;
@@ -99,6 +100,12 @@ public class EnemyScript : MonoBehaviour
             {
                 bossAI.enabled = false;
             }
+                Boss2AI boss2AI = GetComponent<Boss2AI>();
+                if (boss2AI != null)
+                {
+                    boss2AI.enabled = false;
+                    StartCoroutine(waitforDeath());
+                }
             }
         }
        
@@ -121,6 +128,12 @@ public class EnemyScript : MonoBehaviour
         sprite.color = Color.white;
         sprite2.color = Color.white;
         
+    }
+
+    private IEnumerator waitforDeath()
+    {
+        yield return new WaitForSeconds(0.8f);
+        gameComplete.SetActive(true);
     }
 }
 

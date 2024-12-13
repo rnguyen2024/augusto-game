@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     public Animator animator;
+    private Rigidbody2D rb;
     //Minimum health is always set to 0. 
     public int maxHealth = 50;
     public int currentHealth;
@@ -71,7 +72,7 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Initial Damage
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss"))
         {
             takeDamage(5); //Damage player takes
             Debug.Log("Player has collided with an enemy!");
@@ -92,7 +93,7 @@ public class PlayerHealth : MonoBehaviour
     //Detects when collision with enemy ends
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss"))
         {
             Debug.Log("Player left contact enemy!");
 
@@ -150,4 +151,5 @@ public class PlayerHealth : MonoBehaviour
         sprite2.color = Color.white;
         
     }
+    
 }

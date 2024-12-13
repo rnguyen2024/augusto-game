@@ -99,6 +99,8 @@ public class AIBehavior4 : MonoBehaviour
         
         //Calculate direction to player
         Vector2 chargeDirection = (playerTransform.position - transform.position).normalized;
+        animator.SetFloat("BaseSpeed", Mathf.Abs(chargeDirection.y));
+        animator.SetFloat("BaseSpeed", Mathf.Abs(chargeDirection.x));
 
         //Flip enemy based on charge direction
         if (chargeDirection.x != 0) 
@@ -108,8 +110,6 @@ public class AIBehavior4 : MonoBehaviour
 
         while (elapsedTime < chargeDuration)
         {
-            animator.SetFloat("BaseSpeed", Mathf.Abs(chargeDirection.y));
-            animator.SetFloat("BaseSpeed", Mathf.Abs(chargeDirection.x));
             rb2d.velocity = chargeDirection * chargeSpeed;
             elapsedTime += Time.deltaTime;
             yield return null;

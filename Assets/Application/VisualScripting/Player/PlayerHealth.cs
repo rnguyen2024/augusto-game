@@ -32,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
     //Audio source for playing damage sound
     private AudioSource audioSource;
     public AudioClip damageSound;
+    public AudioClip deathSound;
 
     void Start()
     {
@@ -82,6 +83,11 @@ public class PlayerHealth : MonoBehaviour
             if (currentHealth <= 0)
             {
                 Debug.Log("Player Died!");
+                //Plays death sound
+                if (audioSource != null && deathSound != null)
+                {
+                    audioSource.PlayOneShot(deathSound);
+                }
                 //Death logic here!
                 animator.SetBool("IsDead", true);
                 currentScene = SceneManager.GetActiveScene().buildIndex;

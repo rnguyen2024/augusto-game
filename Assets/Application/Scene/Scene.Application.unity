@@ -3120,6 +3120,7 @@ MonoBehaviour:
   sprite: {fileID: 920612887}
   sprite2: {fileID: 588300638}
   damageSound: {fileID: 8300000, guid: 77f657fa4425af14fab114643fe9513f, type: 3}
+  deathSound: {fileID: 8300000, guid: b16a10b9804c6a44c9691a8eacb7a13c, type: 3}
 --- !u!114 &1769434927
 MonoBehaviour:
   m_ObjectHideFlags: 0

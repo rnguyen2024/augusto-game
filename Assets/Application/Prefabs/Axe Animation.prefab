@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7393561576869198520}
   - component: {fileID: -647388981040940460}
   m_Layer: 13
-  m_Name: WhiteFireball
+  m_Name: Axe Animation
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

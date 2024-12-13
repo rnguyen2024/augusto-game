@@ -1695,14 +1695,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1732384857}
     m_Modifications:
-    - target: {fileID: 1216876793516122930, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216876793516122930, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5546079448828468646, guid: 6ebedbe2afa36b04795cd781bfc9f37f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.34
@@ -1743,14 +1735,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8528011222541117646, guid: 6ebedbe2afa36b04795cd781bfc9f37f, type: 3}
-      propertyPath: m_Name
-      value: Enemy1
-      objectReference: {fileID: 0}
     - target: {fileID: 7287519746650576789, guid: 6ebedbe2afa36b04795cd781bfc9f37f, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1251668478}
+    - target: {fileID: 8528011222541117646, guid: 6ebedbe2afa36b04795cd781bfc9f37f, type: 3}
+      propertyPath: m_Name
+      value: Enemy1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216876793516122930, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216876793516122930, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1798,13 +1798,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1732384857}
     m_Modifications:
-    - target: {fileID: 1216876793516122930, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216876793516122930, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
+    - target: {fileID: 51085523335870782, guid: 6ebedbe2afa36b04795cd781bfc9f37f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5546079448828468646, guid: 6ebedbe2afa36b04795cd781bfc9f37f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1846,17 +1842,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8528011222541117646, guid: 6ebedbe2afa36b04795cd781bfc9f37f, type: 3}
-      propertyPath: m_Name
-      value: Enemy1 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 7287519746650576789, guid: 6ebedbe2afa36b04795cd781bfc9f37f, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1284946622}
-    - target: {fileID: 51085523335870782, guid: 6ebedbe2afa36b04795cd781bfc9f37f, type: 3}
-      propertyPath: m_Size.x
-      value: 0.45
+    - target: {fileID: 8528011222541117646, guid: 6ebedbe2afa36b04795cd781bfc9f37f, type: 3}
+      propertyPath: m_Name
+      value: Enemy1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216876793516122930, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216876793516122930, guid: 7191934dd5faf774b804a446c7d2c300, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6498,6 +6498,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4955431238269641445, guid: 8af8aa1680b042441865c3a624d00822, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 4066276789573592775, guid: 32737e2bff4205941b145c5f0e7e9df0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

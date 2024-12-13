@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 50;
     public int currentHealth;
     private int currentScene;
+    public bool hitLevel2 = false;
 
     //References the healthbar class so that it can be interacted with here. 
     public HealthBarScript healthBar;
@@ -42,28 +43,40 @@ public class PlayerHealth : MonoBehaviour
     {
         if (canTakeDamage)
         {
-        currentHealth -= damage;
-        animator.SetTrigger("Hurt"); //Plays "Hurt" animation
-        if(isPoisoned)
-        {
-            StartCoroutine(FlashPurple());
-        }
-        else
-        {
-            StartCoroutine(FlashRed());
-        }
+            currentHealth -= damage;
+            animator.SetTrigger("Hurt"); //Plays "Hurt" animation
+            if (isPoisoned)
+            {
+                StartCoroutine(FlashPurple());
+            }
+            else
+            {
+                StartCoroutine(FlashRed());
+            }
 
-        healthBar.setHealth(currentHealth);
+            healthBar.setHealth(currentHealth);
 
-        if (currentHealth <= 0)
-        {
-            Debug.Log("Player Died!");
-            //Death logic here!
-            animator.SetBool("IsDead", true);
-            currentScene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentScene);
+            if (currentHealth <= 0)
+            {
+                Debug.Log("Player Died!");
+                //Death logic here!
+                animator.SetBool("IsDead", true);
+                currentScene = SceneManager.GetActiveScene().buildIndex;
+                Debug.Log("Current Scene " + currentScene);
 
-        }
+                SceneManager.LoadScene(1);
+
+                SceneManager.LoadScene(currentScene);
+                if (hitLevel2 == false)
+                {
+                    SceneManager.LoadScene(3, LoadSceneMode.Additive);
+                }
+
+                if (hitLevel2 == true)
+                {
+                    SceneManager.LoadScene(6, LoadSceneMode.Additive);
+                }
+            }
         }
     }
 
@@ -149,5 +162,10 @@ public class PlayerHealth : MonoBehaviour
         sprite.color = Color.white;
         sprite2.color = Color.white;
         
+    }
+
+    public void setLvl2()
+    {
+        hitLevel2 = true;
     }
 }

@@ -31,7 +31,7 @@ public class PlayerFireballAbility : MonoBehaviour
 
     private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && canShootFireball)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && canShootFireball)
         {
             ShootFireball();
         }

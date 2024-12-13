@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -74,42 +75,66 @@ public class EnemyScript : MonoBehaviour
     void Die(){
         Debug.Log("Enemy died!");
         animator.SetBool("IsDead", true); 
-        StartCoroutine(WaitAndExecute());
         
-        GetComponent<CapsuleCollider2D>().enabled = false;
+        //Disable collider to prevent further interactions
+        Collider2D collider = GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+        }
 
-        // Check if AIChase exists and disable it, otherwise check for BossAI
+        //Stop any movement by resetting Rigidbody2D velocity
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero; //Stop all movement
+        }
+
+        //Check if AIChase exists and disable it, otherwise check for BossAI
         AIChase aiChase = GetComponent<AIChase>();
+        Enemy2AI AI2 = GetComponent<Enemy2AI>();
+        Enemy3AI AI3 = GetComponent<Enemy3AI>();
+        AIBehavior4 AI4 = GetComponent<AIBehavior4>();
+        AIBehaavior5 AI5 = GetComponent<AIBehaavior5>();
+        AIBehaavior6 AI6 = GetComponent<AIBehaavior6>();
+        BossAI AIBOSS1 = GetComponent<BossAI>();
+        Boss2AI AIBOSS2 = GetComponent<Boss2AI>();
+
         if (aiChase != null)
         {
             aiChase.enabled = false;
         }
-        else
+        else if (AI2 != null)
         {
-            Enemy3AI enemy3AI = GetComponent<Enemy3AI>();
-                if (enemy3AI != null)
-                {
-                    enemy3AI.enabled = false;
-                }
-
-            else
-            {
-                BossAI bossAI = GetComponent<BossAI>();
-            if (bossAI != null)
-            {
-                bossAI.enabled = false;
-            }
-            }
+            AI2.enabled = false;
         }
-       
+        else if (AI3 != null)
+        {
+            AI3.enabled = false;
+        }
+        else if (AI4 != null)
+        {
+            AI4.enabled = false;
+        }
+        else if (AI5 != null)
+        {
+            AI5.enabled = false;
+        }
+        else if (AI6 != null)
+        {
+            AI6.enabled = false;
+        }
+        else if (AIBOSS1 != null)
+        {
+            AIBOSS1.enabled = false;
+        }
+        else if (AIBOSS2 != null)
+        {
+            AIBOSS2.enabled = false;
+        }
         
+        StartCoroutine(WaitAndExecute());
         GetComponent<EnemyScript>().enabled = false;
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-        rb.velocity = Vector2.zero; // Stop any movement
-        rb.isKinematic = true;     // Disable physics interactions
-        }
         this.enabled = false;
     }
 

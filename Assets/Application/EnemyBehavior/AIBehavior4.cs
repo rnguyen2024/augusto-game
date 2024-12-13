@@ -108,6 +108,8 @@ public class AIBehavior4 : MonoBehaviour
 
         while (elapsedTime < chargeDuration)
         {
+            animator.SetFloat("BaseSpeed", Mathf.Abs(chargeDirection.y));
+            animator.SetFloat("BaseSpeed", Mathf.Abs(chargeDirection.x));
             rb2d.velocity = chargeDirection * chargeSpeed;
             elapsedTime += Time.deltaTime;
             yield return null;

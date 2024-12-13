@@ -33,10 +33,19 @@ public class Projectile : MonoBehaviour
         transform.position += (Vector3)moveDirection * speed * Time.deltaTime;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         //Destroy the projectile on collision with player or Objects
-        if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Objects"))
+        if (collision.CompareTag("Player"))
+        {
+            PlayerHealth hp = collision.GetComponent<PlayerHealth>();
+            if (hp != null)
+            {
+                hp.takeDamage(10);
+            }
+                Destroy(gameObject);
+        }
+        else if (collision.CompareTag("Objects"))
         {
             Destroy(gameObject);
         }

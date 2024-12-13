@@ -149,7 +149,7 @@ MonoBehaviour:
   animator: {fileID: 6478296082840407689}
   sprite: {fileID: 5797331396316503579}
   sprite2: {fileID: 4493594930441702106}
-  maxHealth: 135
+  maxHealth: 120
 --- !u!114 &8801004504482156182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2278285229201799836, guid: ec3e5ddc0eed847b29e7c75698f3bab0, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7541544272977121018, guid: ec3e5ddc0eed847b29e7c75698f3bab0, type: 3}
       propertyPath: m_Controller

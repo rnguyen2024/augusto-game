@@ -149,7 +149,7 @@ MonoBehaviour:
   animator: {fileID: 1830256084685689106}
   sprite: {fileID: 5528991217223648416}
   sprite2: {fileID: 8697362248872621607}
-  maxHealth: 80
+  maxHealth: 60
 --- !u!114 &4774381433356531317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,8 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   minimumDistance: 10
-  chaseDistance: 12
-  shootInterval: 2
+  chaseDistance: 13
+  shootInterval: 1.6
   projectilePrefab: {fileID: 8119843852153334873, guid: 6234e5b367cb6864081a7bfbef23765c, type: 3}
   shootPoint: {fileID: 4429232925027607595}
   animator: {fileID: 1830256084685689106}
@@ -267,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7323438508197910318, guid: 5c168e864c70b4127ab2101a6d8f2696, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

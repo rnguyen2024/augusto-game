@@ -72,7 +72,7 @@ public class Enemy2AI : MonoBehaviour
 
         GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<AIChaseNoAttack>().enabled = false;
-        GetComponent<EnemyScript>().enabled = false;
+        GetComponent<Enemy2AI>().enabled = false;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {

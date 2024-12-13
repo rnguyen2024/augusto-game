@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 495045972}
   m_Layer: 6
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7655,7 +7655,7 @@ GameObject:
   - component: {fileID: 1753552802}
   m_Layer: 6
   m_Name: Objects2
-  m_TagString: Untagged
+  m_TagString: Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7902,7 +7902,7 @@ GameObject:
   - component: {fileID: 1813292408}
   m_Layer: 6
   m_Name: Objects
-  m_TagString: Untagged
+  m_TagString: Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8526,6 +8526,14 @@ PrefabInstance:
     - target: {fileID: 6709513151712383668, guid: b4482693146c74544b39b0bcc3a7afb4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918488432946076096, guid: b4482693146c74544b39b0bcc3a7afb4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918488432946076096, guid: b4482693146c74544b39b0bcc3a7afb4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

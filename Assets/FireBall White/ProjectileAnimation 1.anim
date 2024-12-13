@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ProjectileAnimation 3
+  m_Name: ProjectileAnimation 1
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -20,10 +20,8 @@ AnimationClip:
   m_PPtrCurves:
   - serializedVersion: 2
     curve:
-    - time: 0
-      value: {fileID: 21300000, guid: f3d2e0ad6ab9ce74f99925e4a15c16de, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: 9ce368f24df0c4240a101d02f929218e, type: 3}
+      value: {fileID: 21300000, guid: 6363bcd9f8e993c45aafc97db1a77bd8, type: 3}
     - time: 0.16666667
       value: {fileID: 21300000, guid: 6363bcd9f8e993c45aafc97db1a77bd8, type: 3}
     - time: 0.25
@@ -52,8 +50,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: f3d2e0ad6ab9ce74f99925e4a15c16de, type: 3}
-    - {fileID: 21300000, guid: 9ce368f24df0c4240a101d02f929218e, type: 3}
+    - {fileID: 21300000, guid: 6363bcd9f8e993c45aafc97db1a77bd8, type: 3}
     - {fileID: 21300000, guid: 6363bcd9f8e993c45aafc97db1a77bd8, type: 3}
     - {fileID: 21300000, guid: 9f68cc5297df3d844b6aff7c90c12f16, type: 3}
     - {fileID: 21300000, guid: 3cd1d92364699f74f95c75c018b54590, type: 3}

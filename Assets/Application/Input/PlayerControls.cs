@@ -94,18 +94,14 @@ public class PlayerControls : MonoBehaviour
         currentSpeed = originalSpeed; 
          isStunned = false;
     }
-    public void TakeKnockback(Vector2 knockbackDirection, float knockbackForce, string tag)
+
+    public void setStun()
     {
-        Debug.Log($"Knockback applied: Direction = {knockbackDirection}, Force = {knockbackForce}");
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null){
-            if(tag == "Boss"){
-                rb.AddForce(knockbackDirection.normalized * knockbackForce, ForceMode2D.Impulse);
-            }
-        }
+        isStunned = true;
     }
 
-    
-    
-
+    public void unsetStun()
+    {
+        isStunned = false;
+    }
 }

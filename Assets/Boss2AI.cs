@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BossAI : MonoBehaviour
+public class Boss2AI : MonoBehaviour
 {
     public float speed;
     public float chaseDistance;
@@ -9,13 +9,15 @@ public class BossAI : MonoBehaviour
     public float shootInterval; //Time between consecutive shots during the stop phase
     public GameObject projectilePrefab; //Prefab for the boss's projectile
     public Transform shootPoint; //The point where projectiles spawn
+    public GameObject player;
     private float distance;
     private Transform playerTransform;
     private Rigidbody2D rb2d;
     private Vector2 currentDirection;
     private bool isStopping = false;
-    public float aoeRadius = 5f; //Radius of the AoE effect
-    public float slowAmount = 0.5f; //How long the slow effect lasts
+    public float fireballSpreadAngle = 30f;
+    public int fireballCount = 3;
+    public float knockbackForce = 5f;
 
     private float nextDamageTime;
 
@@ -25,7 +27,7 @@ public class BossAI : MonoBehaviour
     
     void Start()
     {
-        GameObject player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player");
         playerTransform = player.transform;
 
         rb2d = GetComponent<Rigidbody2D>();
@@ -72,6 +74,16 @@ public class BossAI : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             animator.SetTrigger("Attack");
+            PlayerControls player = collision.gameObject.GetComponent<PlayerControls>();
+            Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
+            
+            if (player != null)
+            {
+                PlayerControls movement = player.GetComponent<PlayerControls>();
+                player.TakeKnockback(knockbackDirection, knockbackForce, "Boss");
+                StartCoroutine(DisableMovementDuringKnockback(movement, 0.5f));
+            }
+            StartCoroutine(StopAndAttack());
         }
     }
 
@@ -81,6 +93,15 @@ public class BossAI : MonoBehaviour
         {
             StartCoroutine(StopAndShootRoutine());
         }
+    }
+
+    private IEnumerator StopAndAttack(){
+        rb2d.bodyType = RigidbodyType2D.Kinematic;
+        isStopping = true;
+        rb2d.velocity = Vector2.zero;
+        yield return new WaitForSeconds(0.5f);
+        isStopping = false;
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private IEnumerator StopAndShootRoutine()
@@ -93,7 +114,7 @@ public class BossAI : MonoBehaviour
         float timer = 0f;
         while (timer < stopDuration)
         {
-            ShootProjectile();
+            ShootWaveProjectile();
             yield return new WaitForSeconds(shootInterval);
             timer += shootInterval;
         }
@@ -102,20 +123,30 @@ public class BossAI : MonoBehaviour
         rb2d.bodyType = RigidbodyType2D.Dynamic;
     }
 
-    private void ShootProjectile()
+    private void ShootWaveProjectile()
     {
+        float startAngle = -fireballSpreadAngle / 2; 
+        float angleIncrement = fireballSpreadAngle / (fireballCount - 1);
+        Vector2 directionToPlayer = (playerTransform.position - shootPoint.position).normalized;
+
         if (projectilePrefab != null && shootPoint != null)
         {
+            for (int i = 0; i < fireballCount; i++){
             GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
-            Vector2 shootDirection = (playerTransform.position - shootPoint.position).normalized;
+            
+
+            float currentAngle = startAngle + angleIncrement * i;
+            Vector2 shootDirection = Quaternion.Euler(0, 0, currentAngle) * directionToPlayer;
 
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
             if (projectileRb != null)
             {
-                float projectileSpeed = 5f;
+                float projectileSpeed = 7f;
                 projectileRb.velocity = shootDirection * projectileSpeed;
             }
+            }
         }
+    
     }
 
     private IEnumerator RandomStopAndShoot()
@@ -144,35 +175,14 @@ public class BossAI : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private IEnumerator DisableMovementDuringKnockback(PlayerControls movement, float duration){
+    if (movement != null)
     {
-        Debug.Log($"Object entered AoE: {other.name}");
-        // Check if the object entering the AoE is the player
-        if (other.CompareTag("Player"))
-        {
-            PlayerControls playerControls = other.GetComponent<PlayerControls>();
-            if (playerControls != null)
-            {
-                playerControls.ApplySlowEffect(slowAmount);
-                Debug.Log("Player slowed!");
-            }
-        }
+        movement.enabled = false;  // Disable movement script
+        yield return new WaitForSeconds(duration); // Wait for a moment (duration of knockback)
+        movement.enabled = true;   // Re-enable movement script
     }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        Debug.Log($"Object exited AoE: {other.name}");
-        // Check if the object leaving the AoE is the player
-        if (other.CompareTag("Player"))
-        {
-            PlayerControls playerControls = other.GetComponent<PlayerControls>();
-            if (playerControls != null)
-            {
-                playerControls.RemoveSlowEffect();
-                Debug.Log("Player speed restored!");
-            }
-        }
-    }
-
-
+    
+    
+}
 }
